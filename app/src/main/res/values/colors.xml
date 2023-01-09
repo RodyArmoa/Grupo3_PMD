@@ -10,4 +10,6 @@
     
     
     <color name="color_launch">#ffab91</color>
+    <color name="color_amarillo">#FFC400</color>
+    <color name="color_azul">#2979FF</color>
 </resources>
