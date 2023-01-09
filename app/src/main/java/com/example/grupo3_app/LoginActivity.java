@@ -21,17 +21,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-  private EditText etNombre, etpassword;
-  private Button btnEntrar, btnRegistrar;
-  private   CheckBox checkBox;
-  private boolean existeUsuario = false;
-  private SharedPreferences mPrefs;
+    private EditText etNombre, etpassword;
+    private Button btnEntrar, btnRegistrar;
+    private CheckBox checkBox;
+    private boolean existeUsuario = false;
+    private SharedPreferences mPrefs;
 
-  private int attemps = 0;
+    private int attemps = 0;
 
-    private static final String PREF_NAME ="prefsFile";
-
-
+    private static final String PREF_NAME = "prefsFile";
 
 
     @Override
@@ -50,15 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         getPreferencesData();
 
 
-
-        /*etNombre = findViewById(R.id.textViewLogin);
-        etpassword = findViewById(R.id.insert_pass);
-        checkBox = findViewById(R.id.recordar);
-
-        btnEntrar = findViewById(R.id.btn_entrar);
-        btnRegistrar = findViewById(R.id.btn_registra);*/
-
-
         ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -70,20 +59,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-      btnRegistrar.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startForResult.launch(intent);
-                overridePendingTransition(R.anim.right_in,R.anim.right_out);
-
-
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
 
             }
         });
-
 
 
     }
@@ -97,23 +83,23 @@ public class LoginActivity extends AppCompatActivity {
     private void getPreferencesData() {
 
         SharedPreferences sp = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-        if (sp.contains("pref_name")){
+        if (sp.contains("pref_name")) {
             String u = sp.getString("pref_name", "No hay usuario guardado");
             etNombre.setText(u.toString());
 
         }
-        if (sp.contains("pref_pass")){
+        if (sp.contains("pref_pass")) {
             String p = sp.getString("pref_pass", "No password");
             etpassword.setText(p.toString());
         }
-        if (sp.contains("pref_check")){
+        if (sp.contains("pref_check")) {
 
             Boolean b = sp.getBoolean("pref_check", false);
             checkBox.setChecked(b);
         }
     }
 
-    private void bindWidget(){
+    private void bindWidget() {
 
 
         etNombre = findViewById(R.id.textViewLogin);
@@ -121,10 +107,10 @@ public class LoginActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.recordar);
 
         btnEntrar = findViewById(R.id.btn_entrar);
-       btnRegistrar = findViewById(R.id.btn_registra);
+        btnRegistrar = findViewById(R.id.btn_registra);
     }
 
-    private void setupWidgetEventListener(){
+    private void setupWidgetEventListener() {
 
 
         ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -144,48 +130,44 @@ public class LoginActivity extends AppCompatActivity {
 
                 //attemps++;
 
-                if ((!etNombre.getText().toString().equals("")) &&(!etpassword.getText().toString().equals(""))){
+                if ((!etNombre.getText().toString().equals("")) && (!etpassword.getText().toString().equals(""))) {
 
                     if ((!etNombre.getText().toString().equals("Rodrigo"))
-                            &&(!etpassword.getText().toString().equals("123456"))){
+                            && (!etpassword.getText().toString().equals("123456"))) {
 
 
-                        if (checkBox.isChecked()){
-                        Boolean boolIsChecked = checkBox.isChecked();
-                        SharedPreferences.Editor editor = mPrefs.edit();
-                        editor.putString("pref_name", etNombre.getText().toString());
-                        editor.putString("pref_pass",etpassword.getText().toString());
-                        editor.putBoolean("pref_check", boolIsChecked);
-                        editor.apply();
-                        Toast.makeText(getApplicationContext(),"Se ha guardado",
-                                Toast.LENGTH_SHORT).show();
+                        if (checkBox.isChecked()) {
+                            Boolean boolIsChecked = checkBox.isChecked();
+                            SharedPreferences.Editor editor = mPrefs.edit();
+                            editor.putString("pref_name", etNombre.getText().toString());
+                            editor.putString("pref_pass", etpassword.getText().toString());
+                            editor.putBoolean("pref_check", boolIsChecked);
+                            editor.apply();
+                            Toast.makeText(getApplicationContext(), "Se ha guardado",
+                                    Toast.LENGTH_SHORT).show();
 
-                        }else{
+                        } else {
                             mPrefs.edit().clear().apply();
 
                         }
 
-                        Log.i("Username",etNombre.getText().toString());
-                        Log.i("Password",etpassword.getText().toString());
+                        Log.i("Username", etNombre.getText().toString());
+                        Log.i("Password", etpassword.getText().toString());
 
-                        Context context= getApplicationContext();
-                        String string="Username: "+ etNombre.getText().toString()
-                                + "\nPassword: "+ etpassword.getText().toString();
+                        Context context = getApplicationContext();
+                        String string = "Username: " + etNombre.getText().toString()
+                                + "\nPassword: " + etpassword.getText().toString();
 
                         int duartion = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, string, duartion);
                         Intent intent = new Intent(LoginActivity.this, ComunityActivity.class);
                         startForResult.launch(intent);
-                        overridePendingTransition(R.anim.zoom_back_in,R.anim.zoom_back_out);
+                        overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
 
-                      // Intent intent = new Intent(getBaseContext(), ComunityActivity.class);
+                        // Intent intent = new Intent(getBaseContext(), ComunityActivity.class);
                         //intent.putExtra("ux",etNombre.getText().toString());
                         //startActivity(intent);
-
-
-
-
 
 
                         etNombre.getText().clear();
@@ -198,6 +180,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean validarLogin() {
+
+        boolean retorno = true;
+
+        String campo1 = etNombre.getText().toString();
+        String campo2 = etpassword.getText().toString();
+
+        if (campo1.isEmpty()) {
+            etNombre.setError("Login no introducido");
+            Toast.makeText(this, "Login no introducido", Toast.LENGTH_SHORT).show();
+            retorno = false;
+        }
+        if (campo2.isEmpty()) {
+            etpassword.setError("Password no introducido");
+            retorno = false;
+        }
+        return retorno;
     }
 
 

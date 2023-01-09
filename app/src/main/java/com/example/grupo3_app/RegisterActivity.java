@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etNombre, etApellidos, etEmail, etContrseña,etContrseña2;
-    TextView tvNombre, tvApellidos, tvEmail,tvContraseña, tvContraseña2;
+    EditText etNombre, etApellidos, etEmail, etContrseña, etContrseña2;
+    TextView tvNombre, tvApellidos, tvEmail, tvContraseña, tvContraseña2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +17,13 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         etNombre = findViewById(R.id.etApellido);
-        etApellidos= findViewById(R.id.etApellido);
-        etEmail=findViewById(R.id.etEmail);
-        etContrseña=findViewById(R.id.etPassword);
-        etContrseña2=findViewById(R.id.etPassword2);
+        etApellidos = findViewById(R.id.etApellido);
+        etEmail = findViewById(R.id.etEmail);
+        etContrseña = findViewById(R.id.etPassword);
+        etContrseña2 = findViewById(R.id.etPassword2);
 
 
-        tvNombre =  findViewById(R.id.tvNombre);
+        tvNombre = findViewById(R.id.tvNombre);
         tvApellidos = findViewById(R.id.tvApellido);
         tvEmail = findViewById(R.id.tvEmail);
         tvContraseña = findViewById(R.id.tvContraseña);
@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (campo1.isEmpty()) {
             etNombre.setError("Nombre no introducido");
             retorno = false;
-        } else if (campo2.isEmpty() ) {
+        } else if (campo2.isEmpty()) {
             etApellidos.setError("Apellidos no Introducido");
 
             retorno = false;

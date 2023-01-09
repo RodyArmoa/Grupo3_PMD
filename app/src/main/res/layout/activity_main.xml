@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
-        android:text="GRUPO 3 Prueba"
+        android:text="Clases Particular"
         android:textColor="@color/color_launch"
         android:textSize="34sp"
         app:autoSizeTextType="uniform"
@@ -31,15 +31,5 @@
         app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="457dp" />
-
-    <TextView
-        android:id="@+id/DetextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="De"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="401dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

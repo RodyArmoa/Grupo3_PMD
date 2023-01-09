@@ -25,18 +25,18 @@ public class MainActivity extends AppCompatActivity {
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
         Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo);
 
-        TextView deTextView = findViewById(R.id.DetextView2);
+        //TextView deTextView = findViewById(R.id.DetextView2);
         TextView grupo3textView = findViewById(R.id.Grupo3TextView);
         ImageView logo = findViewById(R.id.logoImageView);
 
-        deTextView.setAnimation(animation2);
+        //deTextView.setAnimation(animation2);
         grupo3textView.setAnimation(animation2);
         logo.setAnimation(animation1);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
