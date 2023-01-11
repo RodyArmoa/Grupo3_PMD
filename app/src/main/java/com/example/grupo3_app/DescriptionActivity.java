@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.grupo3_app.beans.ListTeacher;
 
 public class DescriptionActivity extends AppCompatActivity {
-    TextView titleDescription, titleAsignaturaDescription, titleStatusdescription;
+    TextView titleDescription, titleAsignaturaDescription, titleStatusdescription, titleOpinionDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class DescriptionActivity extends AppCompatActivity {
         titleDescription = findViewById(R.id.titleDescription);
         titleAsignaturaDescription = findViewById(R.id.titleAsignaturaDescription);
         titleStatusdescription = findViewById(R.id.titleStatusDescription);
+        titleOpinionDescription = findViewById(R.id.titleOpinionDescription);
 
         titleDescription.setText(element.getName());
         titleDescription.setTextColor(Color.parseColor(element.getColor()));
@@ -28,5 +29,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
         titleStatusdescription.setText(element.getStatus());
         titleStatusdescription.setTextColor(Color.GRAY);
+
+        titleOpinionDescription.setText(element.getOpinion());
     }
 }

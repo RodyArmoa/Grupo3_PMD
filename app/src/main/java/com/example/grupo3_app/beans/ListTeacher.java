@@ -8,15 +8,17 @@ public class ListTeacher implements Serializable {
     public String name;
     public String asignatura;
     public String status;
+    public String Opinion;
 
     public ListTeacher() {
     }
 
-    public ListTeacher(String color, String name, String asignatura, String status) {
+    public ListTeacher(String color, String name, String asignatura, String status, String opinion) {
         this.color = color;
         this.name = name;
         this.asignatura = asignatura;
         this.status = status;
+        Opinion = opinion;
     }
 
     public String getColor() {
@@ -49,5 +51,13 @@ public class ListTeacher implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getOpinion() {
+        return Opinion;
+    }
+
+    public void setOpinion(String opinion) {
+        Opinion = opinion;
     }
 }

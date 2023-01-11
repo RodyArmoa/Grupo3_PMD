@@ -28,19 +28,21 @@ public class ComunityActivity extends AppCompatActivity {
     public void init() {
 
         elementTeacher = new ArrayList<>();
-        elementTeacher.add(new ListTeacher("#775447", "Pedro", "Diseño Interfaces", "Disponible"));
-        elementTeacher.add(new ListTeacher("#76D7C4", "Aitana", "Programacion Web", "Disponible"));
-        elementTeacher.add(new ListTeacher("#717D7E", "Lucia", "Base de Datos", "Ausente"));
-        elementTeacher.add(new ListTeacher("#76448A", "Iñaki", "Programacion Web", "Disponible"));
-        elementTeacher.add(new ListTeacher("#633974", "Jon", "Programacion Web", "Ausente"));
-        elementTeacher.add(new ListTeacher("#0B5345", "Mikel", "Microsoft Azure ", "Disponible"));
-        elementTeacher.add(new ListTeacher("#D68910", "Joseba", "Machine learning ", "Disponible"));
-        elementTeacher.add(new ListTeacher("#BA4A00", "Asier", "Acceso a Datos", "Ausente"));
-        elementTeacher.add(new ListTeacher("#922B21", "Borja", "Big Data Analytics", "Ausente"));
-        elementTeacher.add(new ListTeacher("#775447", "Aitxiber", "Lenguaje de marcas", "Disponible"));
-        elementTeacher.add(new ListTeacher("#775447", "Rodrigo", "Sistemas Informaticos", "Disponible"));
-        elementTeacher.add(new ListTeacher("#76D7C4", "Asier", "Programacion .NET", "Disponible"));
-        elementTeacher.add(new ListTeacher("#717D7E", "David", "Entorno de Desarrollo", "Ausente"));
+        elementTeacher.add(new ListTeacher("#775447", "Pedro", "Diseño Interfaces", "Bilbao","Este profe es el puto amo, me ha " +
+                "facilitado mucho con las tareas de clases.."));
+        elementTeacher.add(new ListTeacher("#76D7C4", "Aitana", "Programacion Web", "Vitoria", "Es una profesora increible, " +
+                "ha tenido mucha paciencia para explicar los...."));
+        elementTeacher.add(new ListTeacher("#717D7E", "Lucia", "Base de Datos", "Bilbao", "no tiene opinion.."));
+        elementTeacher.add(new ListTeacher("#76448A", "Iñaki", "Programacion Web", "Vitoria","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#633974", "Jon", "Programacion Web", "Bilbao","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#0B5345", "Mikel", "Microsoft Azure ", "Donosti","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#D68910", "Joseba", "Machine learning ", "Vitoria","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#BA4A00", "Asier", "Acceso a Datos", "Bilbao","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#922B21", "Borja", "Big Data Analytics", "Ausente","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#775447", "Aitxiber", "Lenguaje de marcas", "Donosti","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#775447", "Rodrigo", "Sistemas Informaticos", "Donosti","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#76D7C4", "Asier", "Programacion .NET", "Vitoria","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#717D7E", "David", "Entorno de Desarrollo", "Donosti","Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
 
 
         LisAdapter lisAdapter = new LisAdapter(elementTeacher, this, new LisAdapter.OnItemClickListener() {

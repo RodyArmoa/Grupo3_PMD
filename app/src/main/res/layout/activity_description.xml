@@ -47,5 +47,21 @@
         android:textSize="28sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/titleOpinionDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleStatusDescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="10dp"
+        android:text="Aqui estarán todas las opiniones de los alunos puede ser de varios
+caracteres, os ea ilimitados...."
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
 
 </RelativeLayout>
