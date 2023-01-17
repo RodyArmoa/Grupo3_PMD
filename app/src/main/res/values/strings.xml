@@ -2,17 +2,23 @@
     <string name="app_name">Grupo3_app</string>
 
     <string name="error_communication">Error de comunicacion</string>
+    
     /*General*/
+    
     <string name="registro">Registrarse</string>
     <string name="login">Login</string>
     <string name="contraseña">Contraseña</string>
     <string name="canciones">Canciones</string>
     <string name="favoritos">Favoritos</string>
+    
     /*Login*/
+    
     <string name="titulo_login">LOGIN</string>
     <string name="recuerda">Recuerdame</string>
     <string name="acceder">Entrar</string>
+    
     /*Registro*/
+    
     <string name="titulo_registro">REGISTRO</string>
     <string name="nombre">Nombre:</string>
     <string name="apellido1">Apellidos</string>
@@ -20,8 +26,34 @@
     <string name="contraseña2">Repite la contraseña:</string>
     <string name="check">Confirmo la politica de privacidad y condiciones de uso</string>
     <string name="registrar">Registrar</string>
+    
     /*Canciones*/
+    
     <string name="titulo_canciones">TODAS LAS CANCIONES</string>
+    
     /*Favoritas*/
     <string name="titulo_favs">TUS FAVORITAS</string>
+    
+    /*ItemMenu*/
+    
+    <string name="item1">Mi Perfil</string>
+    <string name="item2">Opiniones</string>
+    <string name="item3">Asignaturas</string>
+    <string name="item4">Salir</string>
+
+    /*Mis Datos Personales*/
+    <string name="misDatos">Mis Datos Personales</string>
+    <string name="uiDatos">Datos</string>
+    <string name="uiDatosNombre">Nombre</string>
+    <string name="uiDatosApellidos">Apellidos</string>
+    <string name="uiDatosEmail">Email</string>
+    <string name="uiDatosPassWord">Password</string>
+    <string name="uiDatosPhone">Telefono</string>
+    <string name="uiDatosLocation">Localidad</string>
+    <string name="uiDatosPhoto">Foto</string>
+    <string name="uiActualizar">Actualizar</string>
+    <string name="uiActualizarPass">Actualizar Pass</string>
+
+
+
 </resources>

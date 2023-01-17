@@ -4,31 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComunityActivity">
-
+    tools:context=".TopicsActivity">
 
     <TextView
-        android:id="@+id/listaStudentsTextView"
+        android:id="@+id/textViewListaAsignaturas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Lista de Teacher"
+        android:layout_marginTop="16dp"
+        android:text="Lista  de Asignaturas"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="3dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listarecyclerview"
+        android:id="@+id/listAsignaturasRecyView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listaStudentsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewListaAsignaturas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

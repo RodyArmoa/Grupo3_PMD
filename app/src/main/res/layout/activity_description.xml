@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DescriptionActivity">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
     <TextView
-        android:id="@+id/titleDescription"
+        android:id="@+id/titleDescriptionStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -19,10 +21,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/titleAsignaturaDescription"
+        android:id="@+id/titleAsignaturaDescriptionStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleDescription"
+        android:layout_below="@+id/titleDescriptionStudents"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="16dp"
@@ -33,10 +35,10 @@
         android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/titleStatusDescription"
+        android:id="@+id/titleStatusDescriptionStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleAsignaturaDescription"
+        android:layout_below="@+id/titleAsignaturaDescriptionStudents"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="16dp"
@@ -48,20 +50,33 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/titleOpinionDescription"
+        android:id="@+id/titleOpinionDescriptionStudents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titleStatusDescription"
+        android:layout_below="@+id/titleStatusDescriptionStudents"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="10dp"
-        android:text="Aqui estarán todas las opiniones de los alunos puede ser de varios
-caracteres, os ea ilimitados...."
+        android:text="Aqui describimos al profesor"
         android:textColor="@android:color/black"
         android:textSize="28sp"
         android:textStyle="bold" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewOpinion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleOpinionDescriptionStudents"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="100dp" />
+
+    <!--Probamos el ScrollLayout-->
+
+
 
 </RelativeLayout>
+

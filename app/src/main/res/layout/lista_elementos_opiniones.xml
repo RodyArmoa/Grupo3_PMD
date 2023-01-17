@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvlistaOpiniones"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
@@ -14,70 +13,66 @@
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="6dp">
-
             <ImageView
-                android:id="@+id/iconImageViewStudents"
+                android:id="@+id/iconImageViewOpinion"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:padding="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/contact_mail_fill0_wght400_grad0_opsz48" />
+                app:srcCompat="@drawable/communication_icon"
+                android:layout_alignParentLeft="true"/>
 
             <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+                android:id="@+id/linearLayoutOpiniones"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="2dp"
-                android:layout_toEndOf="@+id/iconImageViewStudents"
-                android:layout_toRightOf="@+id/iconImageViewStudents"
-                android:orientation="vertical">
-
+                android:layout_toEndOf="@+id/iconImageViewOpinion"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/iconImageViewOpinion">
                 <TextView
-                    android:id="@+id/nameTextView"
+                    android:id="@+id/idStudenComentTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="Teacher"
+                    android:text="Rodrigo"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
-
+                    android:textStyle="italic"/>
                 <TextView
-                    android:id="@+id/asignaturaTexView"
+                    android:id="@+id/campoOpinionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="BaseDeDatos"
-                    android:textSize="18sp" />
-
+                    android:text="Aqui escribimos los comentarios acerca del profesor"
+                    android:textSize="18sp"/>
             </LinearLayout>
-
             <TextView
-                android:id="@+id/statusTextView"
+                android:id="@+id/dateTextViewOpinion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="6dp"
                 android:layout_marginRight="6dp"
-                android:text="Disponible"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+                android:text="12/12/2022"
+                android:textSize="15sp"
+                android:textStyle=""
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
 
         </RelativeLayout>
+
     </LinearLayout>
 
 

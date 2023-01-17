@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    tools:context=".MiPerfilActivity" >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/misDatos"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+                <!--Imagen del usuario-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idImagenDatos"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/iconsusuario"
+            android:layout_gravity="center"
+            android:layout_marginTop="5sp"/>
+
+        <!--UI-->
+        <TextView
+            android:id="@+id/uiDatos"
+            android:text="@string/uiDatos"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Nombre-->
+        <TextView
+            android:id="@+id/idNombreDatos"
+            android:text="@string/uiDatosNombre"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Apellidos-->
+        <TextView
+            android:id="@+id/idApellidosDatos"
+            android:text="@string/uiDatosApellidos"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Email-->
+        <TextView
+            android:id="@+id/idEmailDatos"
+            android:text="@string/uiDatosEmail"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Password-->
+        <TextView
+            android:id="@+id/idPasswordDato"
+            android:text="@string/uiDatosPassWord"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Phone-->
+        <TextView
+            android:id="@+id/idPhoneDato"
+            android:text="@string/uiDatosPhone"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--Location-->
+        <TextView
+            android:id="@+id/idLocationDato"
+            android:text="@string/uiDatosLocation"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+            <!--Boton Actualizar Datos-->
+        <Button
+            android:id="@+id/idBtnActualizarDato"
+            android:text="@string/uiActualizar"
+            android:layout_marginTop="25dp"
+            android:drawableStart="@drawable/actualizar_icon2"
+            android:drawablePadding="25dp"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            />
+
+        <!--Boton Actualizar Password-->
+        <Button
+            android:id="@+id/idBtnActualizarPassDatos"
+            android:text="@string/uiActualizarPass"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@drawable/actualizar_icon2"
+            android:drawablePadding="25dp"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    
+</ScrollView>

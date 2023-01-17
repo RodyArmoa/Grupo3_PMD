@@ -1,8 +1,10 @@
-package com.example.grupo3_app.beans;
+package com.example.grupo3_app.Teacher;
+
+import com.example.grupo3_app.Topics.Listelementtopic;
 
 import java.io.Serializable;
 
-public class ListTeacher implements Serializable {
+public class ListTeacher extends Listelementtopic implements Serializable{
 
     public String color;
     public String name;
@@ -18,7 +20,7 @@ public class ListTeacher implements Serializable {
         this.name = name;
         this.asignatura = asignatura;
         this.status = status;
-        Opinion = opinion;
+        this.Opinion = opinion;
     }
 
     public String getColor() {
@@ -59,5 +61,16 @@ public class ListTeacher implements Serializable {
 
     public void setOpinion(String opinion) {
         Opinion = opinion;
+    }
+
+    @Override
+    public String toString() {
+        return "ListTeacher{" +
+                "color='" + color + '\'' +
+                ", name='" + name + '\'' +
+                ", asignatura='" + asignatura + '\'' +
+                ", status='" + status + '\'' +
+                ", Opinion='" + Opinion + '\'' +
+                '}';
     }
 }

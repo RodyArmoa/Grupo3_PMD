@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         bindWidget();
         resizeIcons();
         setupWidgetEventListener();
-
         getPreferencesData();
 
 
@@ -67,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 startForResult.launch(intent);
                 overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
+                finish();
 
             }
         });
