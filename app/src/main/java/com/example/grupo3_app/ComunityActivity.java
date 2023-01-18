@@ -1,5 +1,6 @@
 package com.example.grupo3_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +13,58 @@ import android.widget.Toast;
 
 import com.example.grupo3_app.Teacher.ListAdapter;
 import com.example.grupo3_app.Teacher.ListTeacher;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComunityActivity extends AppCompatActivity {
     List<ListTeacher> elementTeacher;
-
+    BottomNavigationView mbottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunity);
 
+
+        //-----------Barra Menu Inferior---------------------------------------------//
+
+        mbottomNavigationView = (BottomNavigationView)findViewById(R.id.bottonNavigation);
+        mbottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId()==R.id.menu_inferior_home){
+
+                    Toast.makeText(ComunityActivity.this, "Home", Toast.LENGTH_SHORT).show();
+
+                } if (item.getItemId()==R.id.menu_inferior_favorite){
+
+
+                    Toast.makeText(ComunityActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
+
+                } if (item.getItemId()==R.id.menu_inferior_perfil){
+
+                    Intent intent = new Intent(ComunityActivity.this, MiPerfilActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                    Toast.makeText(ComunityActivity.this, "Perfil", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+                return true;
+            }
+        });
+
+        //-----------------FIn de Barra Menu inferior------------------//
+
+
+        //--------Inicializacion del metodo Init()--------//
         init();
 
+        //--------Fin del Inicializacion del metodo Init()--------//
 
     }
 
@@ -67,6 +106,9 @@ public class ComunityActivity extends AppCompatActivity {
 
 
     //-----------Recyclerview teacher Listas-----------------------------------------------------------//
+    //----------Esta lista lo realizamos de manera provicional, es simplemente
+    // un ejemplo para comprobar los layout correspondientes-----------------------//
+
     public void init() {
 
         elementTeacher = new ArrayList<>();
@@ -115,6 +157,8 @@ public class ComunityActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    //------------------------Fin de Pasar Objetos teacher a Descripcion----------------------------------------------//
 
 
 }

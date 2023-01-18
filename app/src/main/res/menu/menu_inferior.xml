@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_inferior_home"
+            android:title="Home"
+            android:icon="@mipmap/ic_home_menu_inferior"/>
+    <item android:id="@+id/menu_inferior_favorite"
+        android:title="Favoritos"
+        android:icon="@mipmap/ic_home_favorite_inferior"/>
+    <item android:id="@+id/menu_inferior_perfil"
+        android:title="Perfil"
+        android:icon="@mipmap/ic_perfil6_menu_inferior"/>
+
+</menu>
