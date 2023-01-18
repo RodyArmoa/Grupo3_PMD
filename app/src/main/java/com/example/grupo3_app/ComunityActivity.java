@@ -57,7 +57,6 @@ public class ComunityActivity extends AppCompatActivity {
                 return true;
             }
         });
-
         //-----------------FIn de Barra Menu inferior------------------//
 
 
@@ -112,11 +111,13 @@ public class ComunityActivity extends AppCompatActivity {
     public void init() {
 
         elementTeacher = new ArrayList<>();
-        elementTeacher.add(new ListTeacher("#775447", "Pedro", "Diseño Interfaces", "Bilbao", "Mas de 5 años impartiendo clases a particulares, " +
-                "titulado en la Universidad de Toronto, he trabajado en una de las Big"));
+        elementTeacher.add(new ListTeacher("#775447", "José Mourinho", "Diseño Interfaces", "Bilbao", "Ingeniero te apoya en tareas , exámenes y clases online. Soy experto en programación UNI, con más de 15 años de experiencia. dirigido a estudiantes de Sistemas.\n" +
+                "Cientos de alumnos nacionales y extranjeros garantizan mi servicio."));
         elementTeacher.add(new ListTeacher("#76D7C4", "Aitana", "Programacion Web", "Vitoria", "Es una profesora increible, " +
                 "ha tenido mucha paciencia para explicar los...."));
-        elementTeacher.add(new ListTeacher("#717D7E", "Lucia", "Base de Datos", "Bilbao", "no tiene opinion.."));
+        elementTeacher.add(new ListTeacher("#717D7E", "Rocio", "Programacion Python", "Bilbao", "Me llamo Rocío, soy Ingeniera en Informática graduada por la universidad de Granada y siempre me ha gustado compartir mi pasión por la programación.\n" +
+                "Me gusta compartir mi motivación con los estudiantes en un ambiente relajado, donde puedan hacer cualquier tipo de preguntas y haciendo ejercicios divertidos.\n" +
+                "Me encanta enseñar a programar, especialmente en Python!"));
         elementTeacher.add(new ListTeacher("#76448A", "Iñaki", "Programacion Web", "Vitoria", "Es una profesora increible, \" +\n" +
                 "                \"ha tenido mucha paciencia para explicar los...."));
         elementTeacher.add(new ListTeacher("#633974", "Jon", "Programacion Web", "Bilbao", "Es una profesora increible, \" +\n" +
