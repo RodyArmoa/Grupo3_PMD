@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_inferior_home"
             android:title="Home"
-            android:icon="@mipmap/ic_home_menu_inferior"/>
+            android:icon="@drawable/ic_home_menu_inferior"/>
     <item android:id="@+id/menu_inferior_favorite"
         android:title="Favoritos"
-        android:icon="@mipmap/ic_home_favorite_inferior"/>
+        android:icon="@drawable/ic_favorito_description"/>
     <item android:id="@+id/menu_inferior_perfil"
         android:title="Perfil"
-        android:icon="@mipmap/ic_perfil6_menu_inferior"/>
+        android:icon="@drawable/ic_perfil_menu_inferior"/>
 
 </menu>

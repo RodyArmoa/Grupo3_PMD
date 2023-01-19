@@ -15,7 +15,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/CardViewDesteacher"
         android:layout_width="412dp"
-        android:layout_height="191dp"
+        android:layout_height="202dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="222dp">
@@ -28,11 +28,11 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_gravity="start"
-            android:layout_marginTop="9dp"
             android:layout_marginStart="5sp"
+            android:layout_marginTop="9dp"
             android:padding="14dp"
             android:paddingRight="14dp"
-            android:src="@drawable/iconsusuario"/>
+            android:src="@drawable/iconsusuario" />
 
         <TextView
             android:id="@+id/titleDescriptionStudents"
@@ -59,6 +59,27 @@
             android:text="Asignatura"
             android:textColor="@android:color/black"
             android:textSize="23sp" />
+
+
+        <ImageButton
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="200dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="150dp"
+            android:background="@color/black"
+            android:src="@drawable/ic_phone_description2"/>
+
+        <ImageButton
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="270dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="150dp"
+            android:background="@color/black"
+            android:src="@drawable/ic_favorito_description"/>
+
+
 
         <TextView
             android:id="@+id/titleStatusDescriptionStudents"

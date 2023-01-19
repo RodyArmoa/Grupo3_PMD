@@ -41,7 +41,7 @@
         android:background="#242424"
         app:itemBackground="@color/black"
         app:itemTextColor="@color/white"
-        app:itemIconTint="@color/design_default_color_secondary"
+        app:itemIconTint="@color/white"
         app:menu="@menu/menu_inferior">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
