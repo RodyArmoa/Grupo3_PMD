@@ -36,6 +36,10 @@ public class ComunityActivity extends AppCompatActivity {
 
                 if (item.getItemId()==R.id.menu_inferior_home){
 
+                    Intent intent = new Intent(ComunityActivity.this, ComunityActivity.class);
+                    startActivity(intent);
+                    //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
                     Toast.makeText(ComunityActivity.this, "Home", Toast.LENGTH_SHORT).show();
 
                 } if (item.getItemId()==R.id.menu_inferior_favorite){
@@ -51,6 +55,14 @@ public class ComunityActivity extends AppCompatActivity {
 
                     Toast.makeText(ComunityActivity.this, "Perfil", Toast.LENGTH_SHORT).show();
 
+                }
+                if (item.getItemId()==R.id.menu_inferior_buscar){
+
+                    Intent intent = new Intent(ComunityActivity.this, TopicsActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                    Toast.makeText(ComunityActivity.this, "Asignaturas", Toast.LENGTH_SHORT).show();
                 }
 
 

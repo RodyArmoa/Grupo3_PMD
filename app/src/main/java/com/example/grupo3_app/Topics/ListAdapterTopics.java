@@ -14,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grupo3_app.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class ListAdapterTopics extends RecyclerView.Adapter<ListAdapterTopics.ViewHolder>{
+public class  ListAdapterTopics extends RecyclerView.Adapter<ListAdapterTopics.ViewHolder>{
 
     private List<Listelementtopic> mData;
+    private List<Listelementtopic> listaBuscar;
     private LayoutInflater mInflater;
     private Context context;
     ListAdapterTopics.OnItemClickListener listener;
@@ -32,6 +35,8 @@ public class ListAdapterTopics extends RecyclerView.Adapter<ListAdapterTopics.Vi
         this.context=context;
         this.mData=itemList;
         this.listener = (OnItemClickListener) listener;
+        listaBuscar = new ArrayList<>();
+        listaBuscar.addAll(mData);
 
     }
 
@@ -49,6 +54,29 @@ public class ListAdapterTopics extends RecyclerView.Adapter<ListAdapterTopics.Vi
         holder.bindData(mData.get(position));
 
     }
+
+    public void buscarAsignatura(String buscarAsignatura){
+        int longitud = buscarAsignatura.length();
+        if (longitud==0){
+            mData.clear();
+            mData.addAll(listaBuscar);
+        }else {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                List<Listelementtopic> colleccion = mData.stream().filter(i -> i.getName().toLowerCase().contains(buscarAsignatura.toLowerCase())).collect(Collectors.toList());
+                mData.clear();
+                mData.addAll(colleccion);
+            }else {
+                for (Listelementtopic topic: listaBuscar) {
+                    if (topic.getName().toLowerCase().contains(buscarAsignatura.toLowerCase())){
+                        mData.add(topic);
+                    }
+                    
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

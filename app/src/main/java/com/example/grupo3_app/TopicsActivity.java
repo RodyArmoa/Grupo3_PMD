@@ -6,23 +6,86 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.grupo3_app.Topics.ListAdapterTopics;
 import com.example.grupo3_app.Topics.Listelementtopic;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicsActivity extends AppCompatActivity {
+public class TopicsActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
     List<Listelementtopic> listelementtopics;
-
+    BottomNavigationView mbottomNavigationView;
+    SearchView buscarAsignatura;
+    ListAdapterTopics listAdapterTopics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topics);
 
+
+    buscarAsignatura = (SearchView) findViewById(R.id.buscarAsignatura);
+
+    buscarAsignatura.setOnQueryTextListener(this);
+
+
+
+
+
+        //-----------Barra Menu Inferior---------------------------------------------//
+        mbottomNavigationView = (BottomNavigationView)findViewById(R.id.bottonNavigation);
+        mbottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId()==R.id.menu_inferior_home){
+
+                    Intent intent = new Intent(TopicsActivity.this, ComunityActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                    Toast.makeText(TopicsActivity.this, "Home", Toast.LENGTH_SHORT).show();
+
+                } if (item.getItemId()==R.id.menu_inferior_favorite){
+
+
+                    Toast.makeText(TopicsActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
+
+                } if (item.getItemId()==R.id.menu_inferior_perfil){
+
+                    Intent intent = new Intent(TopicsActivity.this, MiPerfilActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                    Toast.makeText(TopicsActivity.this, "Perfil", Toast.LENGTH_SHORT).show();
+
+                }
+                if (item.getItemId()==R.id.menu_inferior_buscar){
+
+                    Intent intent = new Intent(TopicsActivity.this, TopicsActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                    Toast.makeText(TopicsActivity.this, "Asignaturas", Toast.LENGTH_SHORT).show();
+                }
+
+
+                return true;
+            }
+        });
+
+        //-----------------FIn de Barra Menu inferior------------------//
+
+
+        //--------Inicializacion del metodo Init()--------//
         init();
+        //--------Fin del Inicializacion del metodo Init()--------//
     }
 
 
@@ -41,7 +104,7 @@ public class TopicsActivity extends AppCompatActivity {
         listelementtopics.add(new Listelementtopic("#0B5345", "Amazon Web Services","Susana Torres","Tardes"));
         listelementtopics.add(new Listelementtopic("#9179DD", "Amazon Web Services","Luis Medina","Mañana"));
 
-        ListAdapterTopics listAdapterTopics= new ListAdapterTopics(listelementtopics, this, new ListAdapterTopics.OnItemClickListener() {
+       listAdapterTopics= new ListAdapterTopics(listelementtopics, this, new ListAdapterTopics.OnItemClickListener() {
             @Override
             public void onItemClick(Listelementtopic item) {
 
@@ -83,4 +146,15 @@ public class TopicsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        listAdapterTopics.buscarAsignatura(newText);
+        return false;
+    }
 }
