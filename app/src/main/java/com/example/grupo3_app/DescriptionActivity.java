@@ -3,11 +3,21 @@ package com.example.grupo3_app;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.grupo3_app.Opinions.ListAdapterOpinion;
@@ -19,13 +29,22 @@ import java.util.List;
 
 public class DescriptionActivity extends AppCompatActivity {
     TextView titleDescription, titleAsignaturaDescription, titleStatusdescription, titleOpinionDescription;
-
+    Button escribirComentario;
+    EditText boton_escribirComent;
+    ImageButton verContactos;
     List<ListOpinions> opinions;
+    private ListTeacher teacher;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
+
+        escribirComentario = (Button) findViewById(R.id.idEscribirComentario);
+
+
+
 
         init();
 
@@ -34,6 +53,8 @@ public class DescriptionActivity extends AppCompatActivity {
         titleAsignaturaDescription = findViewById(R.id.titleAsignaturaDescriptionStudents);
         titleStatusdescription = findViewById(R.id.titleStatusDescriptionStudents);
         titleOpinionDescription = findViewById(R.id.titleOpinionDescriptionStudents);
+
+        teacher = element;
 
         titleDescription.setText(element.getName());
         titleDescription.setTextColor(Color.parseColor(element.getColor()));
@@ -44,7 +65,24 @@ public class DescriptionActivity extends AppCompatActivity {
         titleStatusdescription.setTextColor(Color.GRAY);
 
         titleOpinionDescription.setText(element.getOpinion());
+
+
+        verContactos = (ImageButton) findViewById(R.id.verContactos);
+        verContactos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialog(element);
+            }
+        });
+
+        escribirComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CampoComentario();
+            }
+        });
     }
+
 
     public void init() {
 
@@ -92,4 +130,63 @@ public class DescriptionActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapterOpinion);
     }
+
+
+
+    private void showAlertDialog(ListTeacher teacher) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Ponte en contacto a traves de...");
+        builder.setMessage("Asignatura "+ teacher.getAsignatura()
+                +" \n fasgdshdahdhhhjad"
+                +" \n fasgdshdahdhhhjad");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Acción a realizar al presionar el botón OK
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Acción a realizar al presionar el botón Cancel
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+
+    public void CampoComentario() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DescriptionActivity.this);
+        // Get the layout inflater
+        LayoutInflater inflater = DescriptionActivity.this.getLayoutInflater();
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.layout_escribir_opinion, null))
+                // Add action buttons
+                .setPositiveButton(R.string.boton_escribirComent, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                   boton_escribirComent=findViewById(R.id.CampodeComentario);
+                   //opinions.add(new ListOpinions(teacher.getTeacher(),teacher.getOpinion(),teacher.getStatus(),teacher.getName(),teacher.));
+                       // opinions.add(new ListOpinions("AAAMR", "Jon Etxeberria", "1",boton_escribirComent.getText().toString() , "12/01/2022"));
+
+                    }
+
+
+                })
+                .setNegativeButton(R.string.boton_CancelarescribirComent, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+
 }

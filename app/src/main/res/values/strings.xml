@@ -63,4 +63,8 @@
     <string name="actualizarLocaclidad">Localidad</string>
     <string name="botonGuardar">Guardar</string>
 
+
+    <string name="boton_escribirComent">Ok</string>
+    <string name="boton_CancelarescribirComent">Cancelar</string>
+
 </resources>
