@@ -21,6 +21,7 @@ import java.util.List;
 public class ComunityActivity extends AppCompatActivity {
     List<ListTeacher> elementTeacher;
     BottomNavigationView mbottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +30,12 @@ public class ComunityActivity extends AppCompatActivity {
 
         //-----------Barra Menu Inferior---------------------------------------------//
 
-        mbottomNavigationView = (BottomNavigationView)findViewById(R.id.bottonNavigation);
+        mbottomNavigationView = (BottomNavigationView) findViewById(R.id.bottonNavigation);
         mbottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.menu_inferior_home){
+                if (item.getItemId() == R.id.menu_inferior_home) {
 
                     Intent intent = new Intent(ComunityActivity.this, ComunityActivity.class);
                     startActivity(intent);
@@ -42,12 +43,15 @@ public class ComunityActivity extends AppCompatActivity {
 
                     Toast.makeText(ComunityActivity.this, "Home", Toast.LENGTH_SHORT).show();
 
-                } if (item.getItemId()==R.id.menu_inferior_favorite){
+                }
+                if (item.getItemId() == R.id.menu_inferior_favorite) {
 
-
+                    Intent intent = new Intent(ComunityActivity.this, ActualizarDatosActivity.class);
+                    startActivity(intent);
                     Toast.makeText(ComunityActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
 
-                } if (item.getItemId()==R.id.menu_inferior_perfil){
+                }
+                if (item.getItemId() == R.id.menu_inferior_perfil) {
 
                     Intent intent = new Intent(ComunityActivity.this, MiPerfilActivity.class);
                     startActivity(intent);
@@ -56,7 +60,7 @@ public class ComunityActivity extends AppCompatActivity {
                     Toast.makeText(ComunityActivity.this, "Perfil", Toast.LENGTH_SHORT).show();
 
                 }
-                if (item.getItemId()==R.id.menu_inferior_buscar){
+                if (item.getItemId() == R.id.menu_inferior_buscar) {
 
                     Intent intent = new Intent(ComunityActivity.this, TopicsActivity.class);
                     startActivity(intent);
@@ -130,11 +134,11 @@ public class ComunityActivity extends AppCompatActivity {
         elementTeacher.add(new ListTeacher("#717D7E", "Rocio", "Programacion Python", "Bilbao", "Me llamo Rocío, soy Ingeniera en Informática graduada por la universidad de Granada y siempre me ha gustado compartir mi pasión por la programación.\n" +
                 "Me gusta compartir mi motivación con los estudiantes en un ambiente relajado, donde puedan hacer cualquier tipo de preguntas y haciendo ejercicios divertidos.\n" +
                 "Me encanta enseñar a programar, especialmente en Python!"));
-        elementTeacher.add(new ListTeacher("#76448A", "Iñaki", "Programacion Web", "Vitoria", "Es una profesora increible, \" +\n" +
+        elementTeacher.add(new ListTeacher("#76448A", "Iñaki Unzúe", "Programacion Web", "Vitoria", "Es una profesora increible, \" +\n" +
                 "                \"ha tenido mucha paciencia para explicar los...."));
         elementTeacher.add(new ListTeacher("#633974", "Jon", "Programacion Web", "Bilbao", "Es una profesora increible, \" +\n" +
                 "                \"ha tenido mucha paciencia para explicar los...."));
-        elementTeacher.add(new ListTeacher("#0B5345", "Mikel", "Microsoft Azure ", "Donosti", "Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
+        elementTeacher.add(new ListTeacher("#0B5345", "Mikel Oryazabal", "Microsoft Azure ", "Donosti", "Un profesor bastante flojo, cobra mucho para lo que enseña, decepcion."));
         elementTeacher.add(new ListTeacher("#D68910", "Joseba", "Machine learning ", "Vitoria", "Es una profesora increible, \" +\n" +
                 "                \"ha tenido mucha paciencia para explicar los...."));
         elementTeacher.add(new ListTeacher("#BA4A00", "Asier", "Acceso a Datos", "Bilbao", "Es una profesora increible, \" +\n" +

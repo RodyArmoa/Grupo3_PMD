@@ -19,32 +19,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicsActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
+public class TopicsActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     List<Listelementtopic> listelementtopics;
     BottomNavigationView mbottomNavigationView;
     SearchView buscarAsignatura;
     ListAdapterTopics listAdapterTopics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topics);
 
 
-    buscarAsignatura = (SearchView) findViewById(R.id.buscarAsignatura);
+        buscarAsignatura = (SearchView) findViewById(R.id.buscarAsignatura);
 
-    buscarAsignatura.setOnQueryTextListener(this);
-
-
-
+        buscarAsignatura.setOnQueryTextListener(this);
 
 
         //-----------Barra Menu Inferior---------------------------------------------//
-        mbottomNavigationView = (BottomNavigationView)findViewById(R.id.bottonNavigation);
+        mbottomNavigationView = (BottomNavigationView) findViewById(R.id.bottonNavigation);
         mbottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.menu_inferior_home){
+                if (item.getItemId() == R.id.menu_inferior_home) {
 
                     Intent intent = new Intent(TopicsActivity.this, ComunityActivity.class);
                     startActivity(intent);
@@ -52,12 +50,14 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
 
                     Toast.makeText(TopicsActivity.this, "Home", Toast.LENGTH_SHORT).show();
 
-                } if (item.getItemId()==R.id.menu_inferior_favorite){
+                }
+                if (item.getItemId() == R.id.menu_inferior_favorite) {
 
 
                     Toast.makeText(TopicsActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
 
-                } if (item.getItemId()==R.id.menu_inferior_perfil){
+                }
+                if (item.getItemId() == R.id.menu_inferior_perfil) {
 
                     Intent intent = new Intent(TopicsActivity.this, MiPerfilActivity.class);
                     startActivity(intent);
@@ -66,7 +66,7 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
                     Toast.makeText(TopicsActivity.this, "Perfil", Toast.LENGTH_SHORT).show();
 
                 }
-                if (item.getItemId()==R.id.menu_inferior_buscar){
+                if (item.getItemId() == R.id.menu_inferior_buscar) {
 
                     Intent intent = new Intent(TopicsActivity.this, TopicsActivity.class);
                     startActivity(intent);
@@ -89,22 +89,22 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
 
-    public void init(){
+    public void init() {
 
         listelementtopics = new ArrayList<>();
-        listelementtopics.add(new Listelementtopic("#0B5345", "Base de Datos","Pedro Gutierrez","Mañana"));
-        listelementtopics.add(new Listelementtopic("#B779DD", "Programacion","Juan Notario","Tardes"));
-        listelementtopics.add(new Listelementtopic("#9179DD", "Diseño Interfaces","Iñaki Valencia","Mañana"));
-        listelementtopics.add(new Listelementtopic("#79CCDD", "Lenguaje de Marcas","Jon Martinez","Tardes"));
-        listelementtopics.add(new Listelementtopic("#47747D", "Big Data Analyst","Aitxiber Badalona","Mañana"));
-        listelementtopics.add(new Listelementtopic("#7F9093", "Sistemas","Aitor Karanka","Tardes"));
-        listelementtopics.add(new Listelementtopic("#6EBDEE", "Microsoft Azure","Juanma Lopez","Mañana"));
-        listelementtopics.add(new Listelementtopic("#B4EC28", "Amazon Web Services","Alvaro Benito","Tardes"));
-        listelementtopics.add(new Listelementtopic("#79CCDD", "Amazon Web Services","Leire Villamarin","Mañana"));
-        listelementtopics.add(new Listelementtopic("#0B5345", "Amazon Web Services","Susana Torres","Tardes"));
-        listelementtopics.add(new Listelementtopic("#9179DD", "Amazon Web Services","Luis Medina","Mañana"));
+        listelementtopics.add(new Listelementtopic("#0B5345", "Base de Datos", "Pedro Gutierrez", "Mañana"));
+        listelementtopics.add(new Listelementtopic("#B779DD", "Programacion", "Juan Notario", "Tardes"));
+        listelementtopics.add(new Listelementtopic("#9179DD", "Diseño Interfaces", "Iñaki Valencia", "Mañana"));
+        listelementtopics.add(new Listelementtopic("#79CCDD", "Lenguaje de Marcas", "Jon Martinez", "Tardes"));
+        listelementtopics.add(new Listelementtopic("#47747D", "Big Data Analyst", "Aitxiber Badalona", "Mañana"));
+        listelementtopics.add(new Listelementtopic("#7F9093", "Sistemas", "Aitor Karanka", "Tardes"));
+        listelementtopics.add(new Listelementtopic("#6EBDEE", "Microsoft Azure", "Juanma Lopez", "Mañana"));
+        listelementtopics.add(new Listelementtopic("#B4EC28", "Amazon Web Services", "Alvaro Benito", "Tardes"));
+        listelementtopics.add(new Listelementtopic("#79CCDD", "Amazon Web Services", "Leire Villamarin", "Mañana"));
+        listelementtopics.add(new Listelementtopic("#0B5345", "Amazon Web Services", "Susana Torres", "Tardes"));
+        listelementtopics.add(new Listelementtopic("#9179DD", "Amazon Web Services", "Luis Medina", "Mañana"));
 
-       listAdapterTopics= new ListAdapterTopics(listelementtopics, this, new ListAdapterTopics.OnItemClickListener() {
+        listAdapterTopics = new ListAdapterTopics(listelementtopics, this, new ListAdapterTopics.OnItemClickListener() {
             @Override
             public void onItemClick(Listelementtopic item) {
 

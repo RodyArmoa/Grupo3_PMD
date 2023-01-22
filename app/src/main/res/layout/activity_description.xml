@@ -6,126 +6,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DescriptionActivity">
->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DescriptionActivity">
+        >
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/CardViewDesteacher"
-        android:layout_width="412dp"
-        android:layout_height="202dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="222dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardViewDesteacher"
+            android:layout_width="412dp"
+            android:layout_height="202dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="22dp">
 
-        <ImageView
-            android:id="@+id/fotoPerfilImageView"
-            android:layout_width="132dp"
-            android:layout_height="127dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="start"
-            android:layout_marginStart="5sp"
-            android:layout_marginTop="9dp"
-            android:padding="14dp"
-            android:paddingRight="14dp"
-            android:src="@drawable/iconsusuario" />
+            <ImageView
+                android:id="@+id/fotoPerfilImageView"
+                android:layout_width="132dp"
+                android:layout_height="127dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="start"
+                android:layout_marginStart="5sp"
+                android:layout_marginTop="9dp"
+                android:padding="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/iconsusuario" />
+
+            <TextView
+                android:id="@+id/titleDescriptionStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="188dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Descripcion"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/titleAsignaturaDescriptionStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleDescriptionStudents"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="188dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="66dp"
+                android:text="Asignatura"
+                android:textColor="@android:color/black"
+                android:textSize="23sp" />
+
+
+            <ImageButton
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="200dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="150dp"
+                android:background="@color/black"
+                android:src="@drawable/ic_phone_description2" />
+
+            <ImageButton
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:layout_marginStart="270dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="150dp"
+                android:background="@color/black"
+                android:src="@drawable/ic_favorito_description" />
+
+
+            <TextView
+                android:id="@+id/titleStatusDescriptionStudents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleAsignaturaDescriptionStudents"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="188dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="88dp"
+                android:text="Estado"
+                android:textColor="@android:color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/titleDescriptionStudents"
+            android:id="@+id/titleOpinionDescriptionStudents"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="188dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/CardViewDesteacher"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Descripcion"
+            android:layout_marginTop="1dp"
+            android:text="Aqui describimos al profesor"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/titleAsignaturaDescriptionStudents"
+        <Button
+            android:id="@+id/idEscribirComentario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleDescriptionStudents"
+
+            android:layout_below="@+id/titleOpinionDescriptionStudents"
+            android:text="escribir" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerViewOpinion"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_below="@+id/idEscribirComentario"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="188dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="66dp"
-            android:text="Asignatura"
-            android:textColor="@android:color/black"
-            android:textSize="23sp" />
+            android:layout_alignParentBottom="false"
+            android:layout_marginStart="-2dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="5dp" />
 
 
-        <ImageButton
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="150dp"
-            android:background="@color/black"
-            android:src="@drawable/ic_phone_description2"/>
-
-        <ImageButton
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginStart="270dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="150dp"
-            android:background="@color/black"
-            android:src="@drawable/ic_favorito_description"/>
-
-
-
-        <TextView
-            android:id="@+id/titleStatusDescriptionStudents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleAsignaturaDescriptionStudents"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="188dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="88dp"
-            android:text="Estado"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/titleOpinionDescriptionStudents"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/CardViewDesteacher"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="1dp"
-        android:text="Aqui describimos al profesor"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewOpinion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleOpinionDescriptionStudents"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="5dp" />
-
-
-    <!--Probamos el ScrollLayout-->
+        <!--Probamos el ScrollLayout-->
 
 
     </RelativeLayout>

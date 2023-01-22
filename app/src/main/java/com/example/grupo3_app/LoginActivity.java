@@ -182,6 +182,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //----Comprobamos si el campo está vacio---------------//
+
     public boolean validarLogin() {
 
         boolean retorno = true;
@@ -200,6 +202,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         return retorno;
     }
-
+//----Fin de la Comprobacion del campo está vacio---------------//
 
 }

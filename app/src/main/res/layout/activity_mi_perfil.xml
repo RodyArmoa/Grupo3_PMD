@@ -32,15 +32,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="5sp"/>
 
-        <!--UI-->
-        <TextView
-            android:id="@+id/uiDatos"
-            android:text="@string/uiDatos"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
 
         <!--Nombre-->
         <TextView
@@ -72,15 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <!--Password-->
-        <TextView
-            android:id="@+id/idPasswordDato"
-            android:text="@string/uiDatosPassWord"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
 
         <!--Phone-->
         <TextView

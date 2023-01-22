@@ -49,13 +49,13 @@ public class DescriptionActivity extends AppCompatActivity {
     public void init() {
 
         opinions = new ArrayList<>();
-        opinions.add(new ListOpinions("23", "2", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
-        opinions.add(new ListOpinions("43", "65", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
-        opinions.add(new ListOpinions("55", "44", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-        opinions.add(new ListOpinions("86", "10", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
-        opinions.add(new ListOpinions("86", "23", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
-        opinions.add(new ListOpinions("66", "CR7", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-        opinions.add(new ListOpinions("32", "44", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
+        opinions.add(new ListOpinions("23", "Silvia", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
+        opinions.add(new ListOpinions("43", "Maria Carey", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
+        opinions.add(new ListOpinions("55", "Jon Etxeberria", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+        opinions.add(new ListOpinions("86", "Rodrigo Armoa", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
+        opinions.add(new ListOpinions("86", "Pablo Picasso", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
+        opinions.add(new ListOpinions("66", "Ezequiel Lavezzi", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+        opinions.add(new ListOpinions("32", "Mirella ", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
 
 
         ListAdapterOpinion listAdapterOpinion = new ListAdapterOpinion(opinions, this, new ListAdapterOpinion.OnItemClickListener() {
@@ -63,23 +63,26 @@ public class DescriptionActivity extends AppCompatActivity {
             public void onItemClick(ListOpinions item) {
 
             }
-            public int hashCode(){
+
+            public int hashCode() {
                 return super.hashCode();
             }
-            public boolean equals(@Nullable Object obj){
 
-                return  super.equals(obj);
+            public boolean equals(@Nullable Object obj) {
+
+                return super.equals(obj);
             }
 
-            protected  Object clone()throws CloneNotSupportedException{
+            protected Object clone() throws CloneNotSupportedException {
                 return super.clone();
             }
-            public String toString(){
+
+            public String toString() {
                 return super.toString();
 
             }
 
-            protected void finalize() throws Throwable{
+            protected void finalize() throws Throwable {
                 super.finalize();
             }
         });
