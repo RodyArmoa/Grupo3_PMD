@@ -137,8 +137,8 @@ public class DescriptionActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Ponte en contacto a traves de...");
         builder.setMessage("Asignatura "+ teacher.getAsignatura()
-                +" \n fasgdshdahdhhhjad"
-                +" \n fasgdshdahdhhhjad");
+                +" \n Tel: +34 332 454 654"
+                +" \n emailemail@email.com");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
