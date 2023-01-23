@@ -11,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.grupo3_app.Teacher.ListAdapter;
+import com.example.grupo3_app.Adapter.ListAdapterTeacher;
 import com.example.grupo3_app.Teacher.ListTeacher;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -153,7 +153,7 @@ public class ComunityActivity extends AppCompatActivity {
                 "                \"ha tenido mucha paciencia para explicar los....."));
 
 
-        ListAdapter listAdapter = new ListAdapter(elementTeacher, this, new ListAdapter.OnItemClickListener() {
+        ListAdapterTeacher listAdapter = new ListAdapterTeacher(elementTeacher, this, new ListAdapterTeacher.OnItemClickListener() {
             @Override
             public void onItemClick(ListTeacher item) {
                 moveToDescription(item);

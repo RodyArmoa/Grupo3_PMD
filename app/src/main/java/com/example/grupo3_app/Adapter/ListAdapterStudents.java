@@ -1,4 +1,5 @@
-package com.example.grupo3_app.Teacher;
+package com.example.grupo3_app.Adapter;
+
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,40 +14,43 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grupo3_app.R;
+import com.example.grupo3_app.Students.ListStudents;
 
 import java.util.List;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+public class ListAdapterStudents extends RecyclerView.Adapter<ListAdapterStudents.ViewHolder> {
 
-    private List<ListTeacher> mData;
+    private List<ListStudents> mData;
     private LayoutInflater mInflater;
     private Context context;
-    final ListAdapter.OnItemClickListener listener;
+    final ListAdapterStudents.OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onItemClick(ListTeacher item);
+        void onItemClick(ListStudents item);
 
     }
 
-    public ListAdapter(List<ListTeacher> itemList, Context context, ListAdapter.OnItemClickListener listener) {
+    public ListAdapterStudents(List<ListStudents> itemList, Context context, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
+
+
         this.listener = listener;
-
-
     }
 
     @NonNull
     @Override
-    public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.lista_elementos, null);
 
-        return new ListAdapter.ViewHolder(view);
+        return new ListAdapterStudents.ViewHolder(view);
+
+                // beans.ListAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bindData(mData.get(position));
     }
 
@@ -55,7 +59,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return mData.size();
     }
 
-    public void setItems(List<ListTeacher> items) {
+    public void setItems(List<ListStudents> items) {
         mData = items;
     }
 
@@ -71,15 +75,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             status = itemView.findViewById(R.id.statusTextView);
         }
 
-        void bindData(final ListTeacher item) {
-            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
+        void bindData(final ListStudents item) {
+            iconImage.setColorFilter(Color.parseColor(item.Name), PorterDuff.Mode.SRC_IN);
             name.setText(item.getName());
-            asignatura.setText(item.getAsignatura());
-            status.setText(item.getStatus());
+            asignatura.setText(item.Surname);
+            status.setText(item.Phone);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     listener.onItemClick(item);
                 }
             });

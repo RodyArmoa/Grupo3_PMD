@@ -1,18 +1,14 @@
 package com.example.grupo3_app;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.grupo3_app.Opinions.ListAdapterOpinion;
+import com.example.grupo3_app.Adapter.ListAdapterOpinion;
 import com.example.grupo3_app.Opinions.ListOpinions;
 import com.example.grupo3_app.Teacher.ListTeacher;
 

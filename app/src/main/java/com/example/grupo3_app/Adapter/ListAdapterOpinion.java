@@ -1,4 +1,4 @@
-package com.example.grupo3_app.Opinions;
+package com.example.grupo3_app.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,18 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.grupo3_app.Opinions.ListOpinions;
 import com.example.grupo3_app.R;
 
 import java.util.List;
 
 
 
-    public class ListAdapterOpinion extends RecyclerView.Adapter<com.example.grupo3_app.Opinions.ListAdapterOpinion.ViewHolder>{
+    public class ListAdapterOpinion extends RecyclerView.Adapter<ListAdapterOpinion.ViewHolder>{
 
         private List<ListOpinions> mData;
         private LayoutInflater mInflater;
         private Context context;
-        com.example.grupo3_app.Opinions.ListAdapterOpinion.OnItemClickListener listener;
+        ListAdapterOpinion.OnItemClickListener listener;
 
         public interface OnItemClickListener {
             void onItemClick(ListOpinions item);
@@ -31,21 +32,21 @@ import java.util.List;
             this.mInflater= LayoutInflater.from(context);
             this.context=context;
             this.mData=itemList;
-            this.listener = (com.example.grupo3_app.Opinions.ListAdapterOpinion.OnItemClickListener) listener;
+            this.listener = (ListAdapterOpinion.OnItemClickListener) listener;
 
         }
 
 
 
         @Override
-        public com.example.grupo3_app.Opinions.ListAdapterOpinion.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ListAdapterOpinion.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = mInflater.inflate(R.layout.lista_elementos_opiniones,null);
-            return new com.example.grupo3_app.Opinions.ListAdapterOpinion.ViewHolder(view);
+            return new ListAdapterOpinion.ViewHolder(view);
 
         }
 
         @Override
-        public void onBindViewHolder(@NonNull com.example.grupo3_app.Opinions.ListAdapterOpinion.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ListAdapterOpinion.ViewHolder holder, int position) {
             holder.bindData(mData.get(position));
 
         }

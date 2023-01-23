@@ -5,12 +5,14 @@ import com.example.grupo3_app.Topics.Listelementtopic;
 import java.io.Serializable;
 
 public class ListTeacher extends Listelementtopic implements Serializable{
-
+    public Integer id;
     public String color;
     public String name;
+    public String surname;
     public String asignatura;
     public String status;
     public String Opinion;
+    public String location;
 
     public ListTeacher() {
     }
@@ -21,6 +23,13 @@ public class ListTeacher extends Listelementtopic implements Serializable{
         this.asignatura = asignatura;
         this.status = status;
         this.Opinion = opinion;
+    }
+
+    public ListTeacher(Integer id, String name, String surname, String location) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.status = location;
     }
 
     public String getColor() {
@@ -61,6 +70,30 @@ public class ListTeacher extends Listelementtopic implements Serializable{
 
     public void setOpinion(String opinion) {
         Opinion = opinion;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override
