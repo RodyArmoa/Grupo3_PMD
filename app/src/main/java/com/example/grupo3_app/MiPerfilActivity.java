@@ -1,19 +1,26 @@
 package com.example.grupo3_app;
 
 import androidx.activity.OnBackPressedDispatcherOwner;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MiPerfilActivity extends AppCompatActivity {
 
     TextView idNombreDatos, idApellidosDatos, idEmailDatos, idPhoneDato, idLocationDato;
     Button idBtnActualizarDato;
+    ImageButton botonImagnPerfil;
+    private ImageView selectedImageView;
+    private Uri selectedImageUri;
     boolean actualizado = false;
 
     @Override
@@ -21,7 +28,18 @@ public class MiPerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
 
-        //--Solo entraria en esta funcion funcion si pasamos un valor Boolean desde ActualizarDatosActivity--//
+      //---creamos una ImageButton para acederr a la galeria local y cambiar la foto del perfil
+        selectedImageView= (ImageView)findViewById(R.id.idImagenDatos);
+        botonImagnPerfil= findViewById(R.id.select_image_button);
+
+        botonImagnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectImage();
+            }
+        });
+
+        //-------Solo entraria en esta funcion funcion si pasamos un valor Boolean desde ActualizarDatosActivity--//
 
         Boolean isTrue = getIntent().getBooleanExtra("isTrue", false);
 
@@ -83,4 +101,26 @@ public class MiPerfilActivity extends AppCompatActivity {
 
         return super.onSupportNavigateUp();
     }
+
+    private void selectImage() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+
+    //-------Metodo para acceder a la galeria del usuario
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+            selectedImageUri = data.getData();
+            selectedImageView.setImageURI(selectedImageUri);
+        }
+    }
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+
+
 }

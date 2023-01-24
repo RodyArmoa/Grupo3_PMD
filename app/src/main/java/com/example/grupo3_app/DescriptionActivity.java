@@ -3,15 +3,22 @@ package com.example.grupo3_app;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grupo3_app.Opinions.ListAdapterOpinion;
 import com.example.grupo3_app.Opinions.ListOpinions;
@@ -35,6 +43,12 @@ public class DescriptionActivity extends AppCompatActivity {
     List<ListOpinions> opinions;
     private ListTeacher teacher;
 
+    private ImageButton myImageButtonFavoritos;
+    private boolean isImage1 = true;
+
+    private String phoneNumber = "tel:1234567890";
+    private static final int REQUEST_CALL = 1;
+    private Intent callIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +57,35 @@ public class DescriptionActivity extends AppCompatActivity {
 
         escribirComentario = (Button) findViewById(R.id.idEscribirComentario);
 
+//----------Creamos un ImageButton para Favorivos en el cual al pulsar añadimos a la lista de favoritos--------
+        myImageButtonFavoritos = findViewById(R.id.idImageButtonFavoritos);
 
+        myImageButtonFavoritos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isImage1) {
+                    myImageButtonFavoritos.setImageResource(R.drawable.ic_imagebuttonfavorito_2);
+                    isImage1 = false;
+                } else {
+                    myImageButtonFavoritos.setImageResource(R.drawable.ic_favorito_description);
+                    isImage1 = true;
+                    Toast.makeText(DescriptionActivity.this, "Se añadió a Favoritos", Toast.LENGTH_SHORT).show();
+                }
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (isImage1) {
+                            myImageButtonFavoritos.setImageResource(R.drawable.ic_favorito_description);
+                        } else {
+                            myImageButtonFavoritos.setImageResource(R.drawable.ic_imagebuttonfavorito_2);
+                        }
+                        isImage1 = !isImage1;
+                    }
+                }, 2000); // 2 seconds
+            }
+        });
+//---------Fin del metodo de ImageButtonFavorito en el cual al pulsar cambia de imagen-------------------------////
 
 
         init();
@@ -68,12 +110,59 @@ public class DescriptionActivity extends AppCompatActivity {
 
 
         verContactos = (ImageButton) findViewById(R.id.verContactos);
+
+        //----------------PRUEBA DE VER CONTACTO PARA UNA LLAMADA DIRECTA------------//
+
         verContactos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DescriptionActivity.this);
+                builder.setTitle("Realizar llamada");
+                builder.setMessage("¿Desea realizar la llamada a " + phoneNumber + "?");
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        callIntent = new Intent(Intent.ACTION_CALL);
+                        callIntent.setData(Uri.parse(phoneNumber));
+                        if (ContextCompat.checkSelfPermission(DescriptionActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(DescriptionActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                        } else {
+                            startActivity(callIntent);
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+
+            public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+                if (requestCode == REQUEST_CALL) {
+                    if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        startActivity(callIntent);
+                    } else {
+                        Toast.makeText(DescriptionActivity.this, "Permiso Denegado", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        //---------------- FIN PRUEBA DE VER CONTACTO PARA UNA LLAMADA DIRECTA------------//
+
+
+       /* verContactos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showAlertDialog(element);
             }
-        });
+        });*/
 
         escribirComentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +220,7 @@ public class DescriptionActivity extends AppCompatActivity {
         recyclerView.setAdapter(listAdapterOpinion);
     }
 
-
+//----metodo para ver un AlerDialog del usuario---------------------------------//
 
     private void showAlertDialog(ListTeacher teacher) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -156,7 +245,9 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
+//----FIN del metodo para ver un AlerDialog del usuario---------------------------------//
 
+ //-----Metodo para escribir un comentario en DescripcionActiviy---------------------//
 
     public void CampoComentario() {
         AlertDialog.Builder builder = new AlertDialog.Builder(DescriptionActivity.this);
@@ -187,6 +278,7 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //-----FIN del Metodo para escribir un comentario en DescripcionActiviy---------------------//
 
 
 }
