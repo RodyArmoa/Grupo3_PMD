@@ -24,7 +24,7 @@
     <string name="apellido1">Apellidos</string>
     <string name="correo">E-mail:</string>
     <string name="contraseña2">Repite la contraseña:</string>
-    <string name="check">Confirmo la politica de privacidad y condiciones de uso</string>
+    <string name="phone">Telefono</string>
     <string name="registrar">Registrar</string>
 
     /*Canciones*/
