@@ -1,10 +1,8 @@
 package com.example.grupo3_app.Networks;
 
-import android.content.res.Resources;
-
 import com.example.grupo3_app.Teacher.Teacher;
+import com.example.grupo3_app.User.User;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,11 +15,13 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetTeachers extends NetConfiguration implements Runnable {
+public class GetUsuario extends NetConfiguration implements Runnable {
     private final String theUrl = ddbbURL + "/teachers";
 
-    private ArrayList<Teacher> response;
-    public GetTeachers(){}
+    private ArrayList<User> response;
+
+    public GetUsuario() {
+    }
 
     @Override
     public void run() {
@@ -33,7 +33,7 @@ public class GetTeachers extends NetConfiguration implements Runnable {
             int responseCode = httpURLConnection.getResponseCode();
             if (responseCode == 400) {
                 System.out.println("Fallo");
-            } else if (responseCode == HttpURLConnection.HTTP_ACCEPTED) {
+            } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -44,18 +44,20 @@ public class GetTeachers extends NetConfiguration implements Runnable {
                 }
                 bufferedReader.close();
                 String theUnprocessedJSON = stringBuffer.toString();
-                JSONArray mainArray = new JSONArray(theUnprocessedJSON);
-                this.response = new ArrayList<Teacher>();
-                Teacher teacher;
-                for(int i=0; i<mainArray.length();i++){
-                    JSONObject profesor = mainArray.getJSONObject(i);
-                    teacher = new Teacher();
-                    teacher.setId(profesor.getLong("id"));
-                    teacher.setName( profesor.getString("name"));
-                    teacher.setSurname( profesor.getString("surname"));
-                    teacher.setLocation( profesor.getString("location"));
-                    this.response.add(teacher);
-                }
+
+                JSONObject jsonUser = new JSONObject(theUnprocessedJSON);
+
+                User user = new User();
+                user = new User();
+                user.setId(jsonUser.getLong("id"));
+                user.setName(jsonUser.getString("name"));
+                user.setSurname(jsonUser.getString("surname"));
+                user.setEmail(jsonUser.getString("email"));
+                user.setDescription(jsonUser.getString("description"));
+                user.setLocation(jsonUser.getString("location"));
+                user.setPhone(jsonUser.getString("phone"));
+                user.setShift(jsonUser.getString("shift"));
+                this.response.add(user);
             }
         } catch (ProtocolException e) {
             throw new RuntimeException(e);
@@ -67,7 +69,8 @@ public class GetTeachers extends NetConfiguration implements Runnable {
             throw new RuntimeException(e);
         }
     }
-        public ArrayList<Teacher> getResponse() {
+
+    public ArrayList<User> getResponse() {
         return response;
     }
 }

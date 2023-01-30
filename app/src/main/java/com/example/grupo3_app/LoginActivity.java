@@ -9,27 +9,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grupo3_app.Login.Logear;
 import com.example.grupo3_app.Networks.Login;
 
-import java.util.ArrayList;
-
 public class LoginActivity extends AppCompatActivity {
     private EditText etNombre, etpassword;
     private Button btnEntrar, btnRegistrar;
+    private TextView btnEmail;
     private CheckBox checkBox;
     private boolean existeUsuario = false;
     private SharedPreferences mPrefs;
@@ -47,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mPrefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
+
+        btnEmail = findViewById(R.id.btn_correo);
 
         bindWidget();
         resizeIcons();
@@ -78,8 +77,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+//        Enviar email para la password nueva
+
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startForResult.launch(intent);
+                overridePendingTransition(R.anim.right_in, R.anim.right_out);
+
+                finish();
+
+
+            }
+        });
 
     }
+
+
+    //        Enviar email para la password nueva
+
+
 
     private void resizeIcons() {
 
@@ -131,6 +149,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        //-----------Boton acceder y conexion hecha---------------------------------------------//
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,28 +188,20 @@ public class LoginActivity extends AppCompatActivity {
 //                    Meter aqui conexion login
 
                         if (isConnected()) {
-                            System.out.println("Has entrado");
                             Login login = new Login(LoginActivity.this, LoginActivity.this.generateSongJson(),LoginActivity.this.datosUserb());
-                            System.out.println(LoginActivity.this.generateSongJson());
-                            System.out.println(generateSongJson());
                             System.out.println(etNombre);
                             System.out.println(etpassword);
                             Thread thread = new Thread(login);
                             try {
                                 thread.start();
                                 thread.join(); // Awaiting response from the server...
-                                int position = 1;
-                                System.out.println("Estas dentro");
                                 Logear lista = login.getResponse();
                                 if(lista != null){
-                                    System.out.println("Entras por la puerta grande primo");
                                     int duartion = Toast.LENGTH_LONG;
-
                                     Toast toast = Toast.makeText(context, string, duartion);
                                     Intent intent = new Intent(LoginActivity.this, ComunityActivity.class);
                                     startForResult.launch(intent);
                                     overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
-
                                 }
                                 else{
                                     System.out.println("Te dejo entrar por pena pringado");
@@ -210,7 +222,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
 
-//                        Acaba conexion
+        //-----------Boton acceder y conexion hecha---------------------------------------------//
 
 //                        int duartion = Toast.LENGTH_LONG;
 //

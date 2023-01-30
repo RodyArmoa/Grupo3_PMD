@@ -23,13 +23,13 @@ public class Login extends NetConfiguration implements Runnable {
     public Login(){super();}
     private  String theUrl;
     private Resources res;
-    private String favoriteJson;
+    private String loginJson;
     private LoginResponse loginResponse;
     private Logear response;
 
-    public Login(Context context, String favoriteJson, String url) {
+    public Login(Context context, String loginJson, String url) {
         res = context.getResources();;
-        this.favoriteJson = favoriteJson;
+        this.loginJson = loginJson;
         theUrl = ddbbURL + url;
     }
     @Override
@@ -42,7 +42,7 @@ public class Login extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setDoOutput(true);
             try (OutputStream ous = httpURLConnection.getOutputStream()) {
-                byte[] output = favoriteJson.getBytes("utf-8");
+                byte[] output = loginJson.getBytes("utf-8");
                 ous.write(output, 0, output.length);
             }
             int responseCode = httpURLConnection.getResponseCode();
@@ -102,15 +102,12 @@ public class Login extends NetConfiguration implements Runnable {
 //                    loginResponse.setSqlReturn(Integer.parseInt(response.toString()));
 //                }
             }
-            else{
-                System.out.println("Das pena");
-            }
         }
         catch (Exception e) {
             System.out.println("ERROR: "+e.getMessage());
         }
     }
-        public Logear getResponse() {
-    return response;
-}
+    public Logear getResponse() {
+        return response;
+    }
 }
