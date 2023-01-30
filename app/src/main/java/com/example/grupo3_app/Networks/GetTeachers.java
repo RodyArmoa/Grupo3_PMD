@@ -31,9 +31,10 @@ public class GetTeachers extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("GET");
 
             int responseCode = httpURLConnection.getResponseCode();
+            System.out.println(HttpURLConnection.HTTP_ACCEPTED);
             if (responseCode == 400) {
                 System.out.println("Fallo");
-            } else if (responseCode == HttpURLConnection.HTTP_ACCEPTED) {
+            } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -55,6 +56,7 @@ public class GetTeachers extends NetConfiguration implements Runnable {
                     teacher.setSurname( profesor.getString("surname"));
                     teacher.setLocation( profesor.getString("location"));
                     this.response.add(teacher);
+                    System.out.println(response);
                 }
             }
         } catch (ProtocolException e) {

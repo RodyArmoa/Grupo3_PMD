@@ -100,8 +100,8 @@ public class ComunityActivity extends AppCompatActivity {
                 // Nothing to do here...
             }
             // Processing the answer
-            ArrayList<Teacher> listaCanciones = teachers.getResponse();
-            lista.addAll( listaCanciones );
+            ArrayList<Teacher> listateacher = teachers.getResponse();
+            lista.addAll( listateacher );
             ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
         }
         //--------Fin del Inicializacion del metodo Init()--------//

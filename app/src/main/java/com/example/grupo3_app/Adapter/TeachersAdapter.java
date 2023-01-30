@@ -34,14 +34,14 @@ public class TeachersAdapter extends ArrayAdapter<Teacher> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parents){
+        int i= 0;
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate ( R.layout.lista_elementos, null);
-        String nombre = lista.get(position).getName() + lista.get(position).getSurname();
-
+        String nombre = lista.get(position).getName() +" "+ lista.get(position).getSurname();
         ((TextView) view.findViewById( R.id.nameTextView)).setText(nombre);
         ((TextView) view.findViewById( R.id.statusTextView)).setText(lista.get(position).getLocation());
         ((TextView) view.findViewById( R.id.asignaturaTexView)).setText("Asignatura");
-        ((ImageView) view.findViewById(R.id.iconImageViewStudents)).setColorFilter(Color.parseColor("red"), PorterDuff.Mode.SRC_IN);
+        ((ImageView) view.findViewById(R.id.iconImageViewStudents)).setColorFilter(Color.parseColor("black"), PorterDuff.Mode.SRC_IN);
         return view;
     }
 }
