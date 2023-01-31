@@ -17,6 +17,8 @@
     <string name="recuerda">Recuerdame</string>
     <string name="acceder">Entrar</string>
     <string name="recibir_correo">Quiero recibir una contraseña nueva</string>
+    <string name="correo_enviado">Se le ha enviado una contraseña nueva</string>
+
 
     /*Registro*/
 

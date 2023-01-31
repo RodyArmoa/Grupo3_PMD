@@ -34,7 +34,6 @@ public class TeachersAdapter extends ArrayAdapter<Teacher> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parents){
-        int i= 0;
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate ( R.layout.lista_elementos, null);
         String nombre = lista.get(position).getName() +" "+ lista.get(position).getSurname();

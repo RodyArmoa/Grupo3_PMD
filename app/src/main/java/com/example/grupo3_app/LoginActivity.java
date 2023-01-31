@@ -82,11 +82,21 @@ public class LoginActivity extends AppCompatActivity {
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startForResult.launch(intent);
-                overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
-                finish();
+                if (isConnected()) {
+                    Login login = new Login(LoginActivity.this, LoginActivity.this.mensajeJson(),LoginActivity.this.mensajeUrl());
+                    System.out.println(etNombre);
+                    System.out.println(etpassword);
+                    Thread thread = new Thread(login);
+                    try {
+                        thread.start();
+                        thread.join(); // Awaiting response from the server...
+                    } catch (InterruptedException e) {
+                        // Nothing to do here...
+                    }
+
+                }
+
 
 
             }
@@ -292,5 +302,17 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
         return ret;
+    }
+
+
+    public String mensajeJson() {
+
+        return "{" +
+                "\"email\": \"" + etpassword.getText().toString()  + "\"" +
+                "}";
+    }
+
+    public String mensajeUrl(){
+        return "/auth/cambiopass";
     }
 }
