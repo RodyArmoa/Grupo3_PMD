@@ -1,4 +1,5 @@
 <resources>
+    <string name="spinner_english">English</string>
     <string name="app_name">Grupo3_app</string>
 
     <string name="error_communication">Error de comunicacion</string>

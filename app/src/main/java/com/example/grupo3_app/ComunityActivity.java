@@ -53,7 +53,7 @@ public class ComunityActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.menu_inferior_favorite) {
 
-                    Intent intent = new Intent(ComunityActivity.this, ActualizarDatosActivity.class);
+                    Intent intent = new Intent(ComunityActivity.this, FavoriteActivity.class);
                     startActivity(intent);
                     Toast.makeText(ComunityActivity.this, "Favoritos", Toast.LENGTH_SHORT).show();
 
@@ -108,7 +108,7 @@ public class ComunityActivity extends AppCompatActivity {
 
     }
 
-    //-----------Menu Item-----------------------------------------------------------//
+    //-----------Menu Item superior (Parte de Arriba)-----------------------------------------------------------//
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow, menu);
 
