@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="spinner_english">English</string>
+
+    <string name="app_name">group3_app</string>
+
+    <string name="error_communication">communication error</string>
+
+    /*General*/
+
+    <string name="registro">Check in</string>
+    <string name="login">Login</string>
+    <string name="contraseña">Password</string>
+    <string name="canciones">songs</string>
+    <string name="favoritos">Favorites</string>
+
+    /*Login*/
+
+    <string name="titulo_login">LOGIN</string>
+    <string name="recuerda">remember me</string>
+    <string name="acceder">Get In</string>
+
+    /*Registro*/
+
+    <string name="titulo_registro">Register</string>
+    <string name="nombre">Name:</string>
+    <string name="apellido1">Surname</string>
+    <string name="correo">E-mail:</string>
+    <string name="contraseña2">Repeat password:</string>
+    <string name="check">I confirm the privacy policy and conditions of use</string>
+    <string name="registrar">Register</string>
+
+    /*Canciones*/
+
+    <string name="titulo_canciones">ALL THE SONGS</string>
+
+    /*Favoritas*/
+    <string name="titulo_favs">YOUR FAVORITES</string>
+
+    /*ItemMenu*/
+
+    <string name="item1">My profile</string>
+    <string name="item2">Opinions</string>
+    <string name="item3">Subjects</string>
+    <string name="item4">Salir</string>
+
+    /*Mis Datos Personales*/
+    <string name="misDatos">My personal information</string>
+    <string name="uiDatos">Data</string>
+    <string name="uiDatosNombre">Name</string>
+    <string name="uiDatosApellidos">Surname</string>
+    <string name="uiDatosEmail">Email</string>
+    <string name="uiDatosPassWord">Password</string>
+    <string name="uiDatosPhone">Phone</string>
+    <string name="uiDatosLocation">Location</string>
+    <string name="uiDatosPhoto">Photo</string>
+    <string name="uiActualizar">Update</string>
+    <string name="uiActualizarPass">Update Pass</string>
+
+
+    /*Editar mis Datos Personales*/
+    <string name="actualizarNombre">Name</string>
+    <string name="actualizarapellidos">Surname</string>
+    <string name="actualizarEmail">Email</string>
+    <string name="actualizarPhone">Phone</string>
+    <string name="actualizarLocaclidad">Location</string>
+    <string name="botonGuardar">Save</string>
+
+
+    <string name="boton_escribirComent">Ok</string>
+    <string name="boton_CancelarescribirComent">Cancel</string>
+</resources>

@@ -6,19 +6,32 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etNombre, etpassword;
@@ -26,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox checkBox;
     private boolean existeUsuario = false;
     private SharedPreferences mPrefs;
+    private ImageButton btnChangeLanguage;
+
 
     private int attemps = 0;
 
@@ -37,14 +52,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+//----Llamada a los metodos de Multi Idiomas----///
+        buttonSetup();
+        loadLocale();
 
+        //---- Se genera un sharedpreference para el REMEMBERME-----//
         mPrefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
 
         bindWidget();
         resizeIcons();
         setupWidgetEventListener();
-        getPreferencesData();
+        getPreferencesData();//se llama al metodo de guarado de REMEMBERME
 
 
         ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -73,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
 
     private void resizeIcons() {
 
@@ -204,4 +224,58 @@ public class LoginActivity extends AppCompatActivity {
     }
 //----Fin de la Comprobacion del campo está vacio---------------//
 
+
+    //-----------Multi Idiomas------------------------//
+
+    private void buttonSetup() {
+        btnChangeLanguage = findViewById(R.id.btn_change_language);
+        btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChangeLanguageDialog();
+            }
+        });
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] listItems = {"English", "Euskera", "Italiano"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(LoginActivity.this);
+        mBuilder.setTitle("Choose Language");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if (i == 0) {
+                    setLocale("en");
+                } else if (i == 1) {
+                    setLocale("eu");
+                } else if (i == 2) {
+                    setLocale("it");
+                }
+
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    private void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
+    }
+    //-----------FIN DEL Multi Idiomas--------------
 }

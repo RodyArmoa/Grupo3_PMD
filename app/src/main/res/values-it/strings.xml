@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="spinner_english">Inglese</string>
+    <string name="app_name">Grupo3_app</string>
+    <string name="error_communication">Errore di comunicazione</string>
+
+    /*Generale*/
+
+    <string name="registro">Registrati</string>
+    <string name="login">Login</string>
+    <string name="contraseña">Password</string>
+    <string name="canciones">Canzoni</string>
+    <string name="favoritos">Preferiti</string>
+
+    /*Login*/
+
+    <string name="titulo_login">ACCEDI</string>
+    <string name="recuerda">Ricordami</string>
+    <string name="acceder">Accedi</string>
+
+    /*Registro*/
+
+    <string name="titulo_registro">REGISTRAZIONE</string>
+    <string name="nombre">Nome:</string>
+    <string name="apellido1">Cognome</string>
+    <string name="correo">E-mail:</string>
+    <string name="contraseña2">Ripeti password:</string>
+    <string name="check">Confermo la politica sulla privacy e le condizioni d\'uso</string>
+    <string name="registrar">Registrati</string>
+
+    /*Canciones*/
+
+    <string name="titulo_canciones">TUTTE LE CANZONI</string>
+
+    /*Favoritas*/
+    <string name="titulo_favs">I TUOI PREFERITI</string>
+
+    /*ItemMenu*/
+
+    <string name="item1">Il mio profilo</string>
+    <string name="item2">Opinioni</string>
+    <string name="item3">Materie</string>
+    <string name="item4">Esci</string>
+
+    /*Mis Datos Personales*/
+    <string name="misDatos">I miei dati personali</string>
+    <string name="uiDatos">Dati</string>
+    <string name="uiDatosNombre">Nome</string>
+    <string name="uiDatosApellidos">Cognome</string>
+    <string name="uiDatosEmail">Email</string>
+    <string name="uiDatosPassWord">Password</string>
+    <string name="uiDatosPhone">Telefono</string>
+    <string name="uiDatosLocation">Località</string>
+    <string name="uiDatosPhoto">Foto</string>
+    <string name="uiActualizar">Aggiorna</string>
+    <string name="uiActualizarPass">Aggiorna password</string>
+
+
+    /*Editar mis Datos Personales*/
+    <string name="actualizarNombre">Nome</string>
+    <string name="actualizarapellidos">Cognome</string>
+    <string name="actualizarEmail">Email</string>
+    <string name="actualizarPhone">Telefono</string>
+</resources>
