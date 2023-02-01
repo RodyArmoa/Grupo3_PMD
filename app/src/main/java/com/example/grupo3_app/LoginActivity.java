@@ -25,8 +25,7 @@ import com.example.grupo3_app.Networks.Login;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etNombre, etpassword;
-    private Button btnEntrar, btnRegistrar;
-    private TextView btnEmail;
+    private Button btnEntrar, btnRegistrar, btnEmail;
     private CheckBox checkBox;
     private boolean existeUsuario = false;
     private SharedPreferences mPrefs;
@@ -77,12 +76,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
 //        Enviar email para la password nueva
 
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                System.out.println("No entra");
+                Intent intent = new Intent(LoginActivity.this, ResetPassActivity.class);
                 startForResult.launch(intent);
                 overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
@@ -196,6 +198,9 @@ public class LoginActivity extends AppCompatActivity {
                                 thread.start();
                                 thread.join(); // Awaiting response from the server...
                                 Logear lista = login.getResponse();
+
+                                System.out.println(lista.getId());
+
                                 if(lista != null){
                                     int duartion = Toast.LENGTH_LONG;
                                     Toast toast = Toast.makeText(context, string, duartion);

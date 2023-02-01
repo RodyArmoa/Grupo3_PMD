@@ -17,6 +17,13 @@
         android:theme="@style/Theme.Grupo3_app"
         tools:targetApi="31">
         <activity
+            android:name=".ResetPassActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ActualizarDatosActivity"
             android:exported="false">
             <meta-data
