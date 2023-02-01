@@ -98,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
     //        Enviar email para la password nueva
 
 
-
     private void resizeIcons() {
 
         final float destiny = getResources().getDisplayMetrics().density;
@@ -188,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
 //                    Meter aqui conexion login
 
                         if (isConnected()) {
-                            Login login = new Login(LoginActivity.this, LoginActivity.this.generateSongJson(),LoginActivity.this.datosUserb());
+                            Login login = new Login(LoginActivity.this, LoginActivity.this.generateSongJson(), LoginActivity.this.datosUserb());
                             System.out.println(etNombre);
                             System.out.println(etpassword);
                             Thread thread = new Thread(login);
@@ -196,15 +195,15 @@ public class LoginActivity extends AppCompatActivity {
                                 thread.start();
                                 thread.join(); // Awaiting response from the server...
                                 Logear lista = login.getResponse();
-                                if(lista != null){
+                                if (lista != null) {
                                     int duartion = Toast.LENGTH_LONG;
                                     Toast toast = Toast.makeText(context, string, duartion);
                                     Intent intent = new Intent(LoginActivity.this, ComunityActivity.class);
+                                    intent.putExtra("userid", lista.getId());
                                     startForResult.launch(intent);
                                     overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
-                                }
-                                else{
-                                    System.out.println("Te dejo entrar por pena pringado");
+                                } else {
+                                    System.out.println("Datos incorrectos, comprueba si el Email existe en la BBDD");
                                 }
 
 
@@ -222,7 +221,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
 
-        //-----------Boton acceder y conexion hecha---------------------------------------------//
+                        //-----------Boton acceder y conexion hecha---------------------------------------------//
 
 //                        int duartion = Toast.LENGTH_LONG;
 //
@@ -267,16 +266,17 @@ public class LoginActivity extends AppCompatActivity {
         }
         return retorno;
     }
-//----Fin de la Comprobacion del campo está vacio---------------//
+
+    //----Fin de la Comprobacion del campo está vacio---------------//
     public String generateSongJson() {
 
         return "{" +
                 "\"email\": \"" + etNombre.getText().toString() + "\", " +
-                "\"password\": \"" + etpassword.getText().toString()  + "\"" +
+                "\"password\": \"" + etpassword.getText().toString() + "\"" +
                 "}";
     }
 
-    public String datosUserb(){
+    public String datosUserb() {
         return "/auth/login";
     }
 
@@ -284,7 +284,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean ret = false;
         try {
             ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
-                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;

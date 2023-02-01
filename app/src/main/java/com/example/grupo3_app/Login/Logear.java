@@ -4,16 +4,16 @@ public class Logear {
 
     private static final long serialVersionUID = -578858462965845200L;
 
-    private Long id;
+    private int id;
     private String email;
     private boolean admin;
     private String accesToken;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

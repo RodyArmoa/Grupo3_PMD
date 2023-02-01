@@ -4,11 +4,18 @@ import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.grupo3_app.Response.UserResponse;
+import com.example.grupo3_app.User.User;
 
 public class MiPerfilActivity extends AppCompatActivity {
 
@@ -20,6 +27,8 @@ public class MiPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
+        Bundle extra= getIntent().getExtras();
+        Integer iduser=extra.getInt("userid");
 
         //--Solo entraria en esta funcion funcion si pasamos un valor Boolean desde ActualizarDatosActivity--//
 
@@ -70,6 +79,8 @@ public class MiPerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MiPerfilActivity.this, ActualizarDatosActivity.class);
+                intent.putExtra("userid",iduser);
+                System.out.println(iduser);
                 startActivity(intent);
 
             }
@@ -90,4 +101,25 @@ public class MiPerfilActivity extends AppCompatActivity {
 
         return super.onSupportNavigateUp();
     }
+
+
+
+
+
+
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+        }
+        return ret;
+    }
+
+
 }

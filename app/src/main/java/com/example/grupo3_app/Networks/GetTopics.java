@@ -1,6 +1,7 @@
 package com.example.grupo3_app.Networks;
 
 import com.example.grupo3_app.Teacher.Teacher;
+import com.example.grupo3_app.Topics.Topics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,11 +16,12 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetTeachers extends NetConfiguration implements Runnable {
-    private final String theUrl = ddbbURL + "/teachers";
+public class GetTopics extends NetConfiguration implements Runnable {
 
-    private ArrayList<Teacher> response;
-    public GetTeachers(){}
+    private final String theUrl = ddbbURL + "/topics";
+
+    private ArrayList<Topics> response;
+    public GetTopics(){}
 
     @Override
     public void run() {
@@ -44,15 +46,15 @@ public class GetTeachers extends NetConfiguration implements Runnable {
                 bufferedReader.close();
                 String theUnprocessedJSON = stringBuffer.toString();
                 JSONArray mainArray = new JSONArray(theUnprocessedJSON);
-                this.response = new ArrayList<Teacher>();
-                Teacher teacher;
+                this.response = new ArrayList<Topics>();
+                Topics teacher;
                 for(int i=0; i<mainArray.length();i++){
                     JSONObject profesor = mainArray.getJSONObject(i);
-                    teacher = new Teacher();
-                    teacher.setId(profesor.getLong("id"));
+                    teacher = new Topics();
+                    teacher.setId(profesor.getInt("id"));
                     teacher.setName( profesor.getString("name"));
-                    teacher.setSurname( profesor.getString("surname"));
-                    teacher.setLocation( profesor.getString("location"));
+
+
                     this.response.add(teacher);
                     System.out.println(response);
                 }
@@ -67,7 +69,7 @@ public class GetTeachers extends NetConfiguration implements Runnable {
             throw new RuntimeException(e);
         }
     }
-        public ArrayList<Teacher> getResponse() {
+    public ArrayList<Topics> getResponse() {
         return response;
     }
 }
