@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.grupo3_app.R;
-import com.example.grupo3_app.Teacher.Teacher;
 import com.example.grupo3_app.User.User;
 
 import java.util.ArrayList;
