@@ -31,8 +31,8 @@ public class ComunityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comunity);
-        Bundle extra= getIntent().getExtras();
-        Integer iduser=extra.getInt("userid");
+        Bundle extra = getIntent().getExtras();
+        Integer iduser = extra.getInt("userid");
 
 
         //-----------Barra Menu Inferior---------------------------------------------//
@@ -61,7 +61,7 @@ public class ComunityActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.menu_inferior_perfil) {
 
                     Intent intent = new Intent(ComunityActivity.this, MiPerfilActivity.class);
-                    intent.putExtra("userid",iduser);
+                    intent.putExtra("userid", iduser);
                     System.out.println(iduser);
                     startActivity(intent);
                     overridePendingTransition(R.anim.right_in, R.anim.right_out);
@@ -88,11 +88,8 @@ public class ComunityActivity extends AppCompatActivity {
         //--------Inicializacion del metodo Init()--------//
         ArrayList<Teacher> lista = new ArrayList<>();
 
-        TeachersAdapter teachersAdapter = new TeachersAdapter (this, R.layout.lista_elementos, lista);
-        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
-
-
-
+        TeachersAdapter teachersAdapter = new TeachersAdapter(this, R.layout.lista_elementos, lista);
+        ((ListView) findViewById(R.id.listarecyclerview)).setAdapter(teachersAdapter);
 
 
         if (isConnected()) {
@@ -106,8 +103,8 @@ public class ComunityActivity extends AppCompatActivity {
             }
             // Processing the answer
             ArrayList<Teacher> listateacher = teachers.getResponse();
-            lista.addAll( listateacher );
-            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+            lista.addAll(listateacher);
+            ((ListView) findViewById(R.id.listarecyclerview)).setAdapter(teachersAdapter);
         }
 
     }
@@ -151,8 +148,6 @@ public class ComunityActivity extends AppCompatActivity {
     }
 
 
-
-
     //------------------------Pasar Objetos teacher a Descripcion----------------------------------------------//
     public void moveToDescription(ListTeacher item) {
         Intent intent = new Intent(this, DescriptionActivity.class);
@@ -167,7 +162,7 @@ public class ComunityActivity extends AppCompatActivity {
         boolean ret = false;
         try {
             ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
-                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;
