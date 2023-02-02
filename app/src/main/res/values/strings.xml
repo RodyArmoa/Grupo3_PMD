@@ -17,6 +17,9 @@
     <string name="titulo_login">LOGIN</string>
     <string name="recuerda">Recuerdame</string>
     <string name="acceder">Entrar</string>
+    <string name="recibir_correo">Quiero recibir una contraseña nueva</string>
+    <string name="correo_enviado">Se le ha enviado una contraseña nueva</string>
+
 
     /*Registro*/
 
@@ -25,7 +28,7 @@
     <string name="apellido1">Apellidos</string>
     <string name="correo">E-mail:</string>
     <string name="contraseña2">Repite la contraseña:</string>
-    <string name="check">Confirmo la politica de privacidad y condiciones de uso</string>
+    <string name="phone">Telefono</string>
     <string name="registrar">Registrar</string>
 
     /*Canciones*/

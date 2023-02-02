@@ -68,19 +68,17 @@
                 android:layout_marginStart="200dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="150dp"
-                android:background="@color/color10"
+                android:background="@color/black"
                 android:src="@drawable/ic_phone_description2" />
 
             <ImageButton
-                android:id="@+id/idImageButtonFavoritos"
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 android:layout_marginStart="270dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="150dp"
-                android:background="@color/color10"
-                android:src="@drawable/ic_imagebuttonfavorito_2"
-                android:onClick="changeImage"/>
+                android:background="@color/black"
+                android:src="@drawable/ic_favorito_description" />
 
 
             <TextView
@@ -123,7 +121,7 @@
             android:layout_marginTop="15dp"
             android:text="escribir"
             app:cornerRadius="30dp"
-            android:backgroundTint="@color/color10"
+            android:backgroundTint="@color/black"
             android:layout_marginStart="285dp"/>
 
         <androidx.recyclerview.widget.RecyclerView

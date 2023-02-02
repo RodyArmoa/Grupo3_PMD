@@ -8,14 +8,15 @@
     tools:context=".TopicsActivity">
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/listAsignaturasRecyView"
         android:layout_width="409dp"
         android:layout_height="614dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buscarAsignatura" />
+        tools:ignore="MissingConstraints" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottonNavigation"
@@ -32,13 +33,5 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <SearchView
-        android:id="@+id/buscarAsignatura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

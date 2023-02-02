@@ -1,36 +1,31 @@
 package com.example.grupo3_app;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.Uri;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.grupo3_app.Opinions.ListAdapterOpinion;
+import com.example.grupo3_app.Adapter.DescriptionAdapter;
+import com.example.grupo3_app.Adapter.TeachersAdapter;
+import com.example.grupo3_app.Networks.GetTeachers;
+import com.example.grupo3_app.Networks.GetUsuario;
 import com.example.grupo3_app.Opinions.ListOpinions;
 import com.example.grupo3_app.Teacher.ListTeacher;
+import com.example.grupo3_app.Teacher.Teacher;
+import com.example.grupo3_app.User.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +38,6 @@ public class DescriptionActivity extends AppCompatActivity {
     List<ListOpinions> opinions;
     private ListTeacher teacher;
 
-    private ImageButton myImageButtonFavoritos;
-    private boolean isImage1 = true;
-
-    private String phoneNumber = "tel:1234567890";
-    private static final int REQUEST_CALL = 1;
-    private Intent callIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,38 +46,14 @@ public class DescriptionActivity extends AppCompatActivity {
 
         escribirComentario = (Button) findViewById(R.id.idEscribirComentario);
 
-//----------Creamos un ImageButton para Favorivos en el cual al pulsar añadimos a la lista de favoritos--------
-        myImageButtonFavoritos = findViewById(R.id.idImageButtonFavoritos);
-
-        myImageButtonFavoritos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isImage1) {
-                    myImageButtonFavoritos.setImageResource(R.drawable.ic_imagebuttonfavorito_2);
-                    isImage1 = false;
-                } else {
-                    myImageButtonFavoritos.setImageResource(R.drawable.ic_favorito_description);
-                    isImage1 = true;
-                    Toast.makeText(DescriptionActivity.this, "Se añadió a Favoritos", Toast.LENGTH_SHORT).show();
-                }
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isImage1) {
-                            myImageButtonFavoritos.setImageResource(R.drawable.ic_favorito_description);
-                        } else {
-                            myImageButtonFavoritos.setImageResource(R.drawable.ic_imagebuttonfavorito_2);
-                        }
-                        isImage1 = !isImage1;
-                    }
-                }, 2000); // 2 seconds
-            }
-        });
-//---------Fin del metodo de ImageButtonFavorito en el cual al pulsar cambia de imagen-------------------------////
+//        init();
 
 
-        init();
+//        CREAR FUNCION PARA LLAMAR DATOS DE USUARIO
+        datosperfil();
+
+//        CREAR FUNCION PARA LLAMAR DATOS DE OPINIONES
+        aniadiropinion(); //HACERLO Y TERMINAR
 
         ListTeacher element = (ListTeacher) getIntent().getSerializableExtra("ListTeacher");
         titleDescription = findViewById(R.id.titleDescriptionStudents);
@@ -110,59 +75,12 @@ public class DescriptionActivity extends AppCompatActivity {
 
 
         verContactos = (ImageButton) findViewById(R.id.verContactos);
-
-        //----------------PRUEBA DE VER CONTACTO PARA UNA LLAMADA DIRECTA------------//
-
         verContactos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(DescriptionActivity.this);
-                builder.setTitle("Realizar llamada");
-                builder.setMessage("¿Desea realizar la llamada a " + phoneNumber + "?");
-                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        callIntent = new Intent(Intent.ACTION_CALL);
-                        callIntent.setData(Uri.parse(phoneNumber));
-                        if (ContextCompat.checkSelfPermission(DescriptionActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(DescriptionActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-                        } else {
-                            startActivity(callIntent);
-                        }
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-
-            public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-                if (requestCode == REQUEST_CALL) {
-                    if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        startActivity(callIntent);
-                    } else {
-                        Toast.makeText(DescriptionActivity.this, "Permiso Denegado", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-
-        //---------------- FIN PRUEBA DE VER CONTACTO PARA UNA LLAMADA DIRECTA------------//
-
-
-       /* verContactos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showAlertDialog(element);
             }
-        });*/
+        });
 
         escribirComentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,54 +91,54 @@ public class DescriptionActivity extends AppCompatActivity {
     }
 
 
-    public void init() {
+//    public void init() {
+//
+//        opinions = new ArrayList<>();
+//        opinions.add(new ListOpinions("23", "Silvia", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
+//        opinions.add(new ListOpinions("43", "Maria Carey", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
+//        opinions.add(new ListOpinions("55", "Jon Etxeberria", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+//        opinions.add(new ListOpinions("86", "Rodrigo Armoa", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
+//        opinions.add(new ListOpinions("86", "Pablo Picasso", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
+//        opinions.add(new ListOpinions("66", "Ezequiel Lavezzi", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+//        opinions.add(new ListOpinions("32", "Mirella ", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
+//
+//
+//        ListAdapterOpinion listAdapterOpinion = new ListAdapterOpinion(opinions, this, new ListAdapterOpinion.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(ListOpinions item) {
+//
+//            }
+//
+//            public int hashCode() {
+//                return super.hashCode();
+//            }
+//
+//            public boolean equals(@Nullable Object obj) {
+//
+//                return super.equals(obj);
+//            }
+//
+//            protected Object clone() throws CloneNotSupportedException {
+//                return super.clone();
+//            }
+//
+//            public String toString() {
+//                return super.toString();
+//
+//            }
+//
+//            protected void finalize() throws Throwable {
+//                super.finalize();
+//            }
+//        });
+//
+//        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOpinion);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(listAdapterOpinion);
+//    }
 
-        opinions = new ArrayList<>();
-        opinions.add(new ListOpinions("23", "Silvia", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
-        opinions.add(new ListOpinions("43", "Maria Carey", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
-        opinions.add(new ListOpinions("55", "Jon Etxeberria", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-        opinions.add(new ListOpinions("86", "Rodrigo Armoa", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
-        opinions.add(new ListOpinions("86", "Pablo Picasso", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
-        opinions.add(new ListOpinions("66", "Ezequiel Lavezzi", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-        opinions.add(new ListOpinions("32", "Mirella ", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
 
-
-        ListAdapterOpinion listAdapterOpinion = new ListAdapterOpinion(opinions, this, new ListAdapterOpinion.OnItemClickListener() {
-            @Override
-            public void onItemClick(ListOpinions item) {
-
-            }
-
-            public int hashCode() {
-                return super.hashCode();
-            }
-
-            public boolean equals(@Nullable Object obj) {
-
-                return super.equals(obj);
-            }
-
-            protected Object clone() throws CloneNotSupportedException {
-                return super.clone();
-            }
-
-            public String toString() {
-                return super.toString();
-
-            }
-
-            protected void finalize() throws Throwable {
-                super.finalize();
-            }
-        });
-
-        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOpinion);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(listAdapterOpinion);
-    }
-
-//----metodo para ver un AlerDialog del usuario---------------------------------//
 
     private void showAlertDialog(ListTeacher teacher) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -245,9 +163,7 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
-//----FIN del metodo para ver un AlerDialog del usuario---------------------------------//
 
- //-----Metodo para escribir un comentario en DescripcionActiviy---------------------//
 
     public void CampoComentario() {
         AlertDialog.Builder builder = new AlertDialog.Builder(DescriptionActivity.this);
@@ -262,6 +178,13 @@ public class DescriptionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                    boton_escribirComent=findViewById(R.id.CampodeComentario);
+
+
+
+//                   INSERTAR AQUI EL CREATE DE OPINIONES
+
+
+
                    //opinions.add(new ListOpinions(teacher.getTeacher(),teacher.getOpinion(),teacher.getStatus(),teacher.getName(),teacher.));
                        // opinions.add(new ListOpinions("AAAMR", "Jon Etxeberria", "1",boton_escribirComent.getText().toString() , "12/01/2022"));
 
@@ -278,7 +201,63 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //-----FIN del Metodo para escribir un comentario en DescripcionActiviy---------------------//
+    private void datosperfil() {
+        ArrayList<User> lista = new ArrayList<>();
 
+        DescriptionAdapter descriptionAdapter = new DescriptionAdapter (this, R.layout.lista_elementos, lista);
+        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+
+        if (isConnected()) {
+            GetUsuario users = new GetUsuario();
+            Thread thread = new Thread(users);
+            try {
+                thread.start();
+                thread.join(); // Awaiting response from the server...
+            } catch (InterruptedException e) {
+                // Nothing to do here...
+            }
+            // Processing the answer
+            ArrayList<User> listaCanciones = users.getResponse();
+            lista.addAll( listaCanciones );
+            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+        }
+    }
+
+    private void aniadiropinion() {
+        ArrayList<Teacher> lista = new ArrayList<>();
+
+        TeachersAdapter teachersAdapter = new TeachersAdapter (this, R.layout.lista_elementos, lista);
+        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+
+        if (isConnected()) {
+            GetTeachers teachers = new GetTeachers();
+            Thread thread = new Thread(teachers);
+            try {
+                thread.start();
+                thread.join(); // Awaiting response from the server...
+            } catch (InterruptedException e) {
+                // Nothing to do here...
+            }
+            // Processing the answer
+            ArrayList<Teacher> listaCanciones = teachers.getResponse();
+            lista.addAll( listaCanciones );
+            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+        }
+    }
+
+
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+        }
+        return ret;
+    }
 
 }

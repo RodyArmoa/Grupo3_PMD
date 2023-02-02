@@ -1,45 +1,36 @@
 package com.example.grupo3_app;
 
 import androidx.activity.OnBackPressedDispatcherOwner;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.grupo3_app.Response.UserResponse;
+import com.example.grupo3_app.User.User;
 
 public class MiPerfilActivity extends AppCompatActivity {
 
     TextView idNombreDatos, idApellidosDatos, idEmailDatos, idPhoneDato, idLocationDato;
     Button idBtnActualizarDato;
-    ImageButton botonImagnPerfil;
-    private ImageView selectedImageView;
-    private Uri selectedImageUri;
     boolean actualizado = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_perfil);
+        Bundle extra= getIntent().getExtras();
+        Integer iduser=extra.getInt("userid");
 
-      //---creamos una ImageButton para acederr a la galeria local y cambiar la foto del perfil
-        selectedImageView= (ImageView)findViewById(R.id.idImagenDatos);
-        botonImagnPerfil= findViewById(R.id.select_image_button);
-
-        botonImagnPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectImage();
-            }
-        });
-
-        //-------Solo entraria en esta funcion funcion si pasamos un valor Boolean desde ActualizarDatosActivity--//
+        //--Solo entraria en esta funcion funcion si pasamos un valor Boolean desde ActualizarDatosActivity--//
 
         Boolean isTrue = getIntent().getBooleanExtra("isTrue", false);
 
@@ -75,12 +66,21 @@ public class MiPerfilActivity extends AppCompatActivity {
         }
 
 
+
+
+        //        CREAR FUNCION PARA LLAMAR DATOS DE USUARIO
+
+
+
+
         idBtnActualizarDato = (Button) findViewById(R.id.idBtnActualizarDato);
 
         idBtnActualizarDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MiPerfilActivity.this, ActualizarDatosActivity.class);
+                intent.putExtra("userid",iduser);
+                System.out.println(iduser);
                 startActivity(intent);
 
             }
@@ -102,25 +102,24 @@ public class MiPerfilActivity extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
-    private void selectImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
 
 
-    //-------Metodo para acceder a la galeria del usuario
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            selectedImageUri = data.getData();
-            selectedImageView.setImageURI(selectedImageUri);
+
+
+
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
+        return ret;
     }
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-
 
 
 }
