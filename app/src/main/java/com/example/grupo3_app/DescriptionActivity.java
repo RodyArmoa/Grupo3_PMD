@@ -54,14 +54,14 @@ public class DescriptionActivity extends AppCompatActivity {
 
         escribirComentario = (Button) findViewById(R.id.idEscribirComentario);
 
-//        init();
+        init();
 
 
 //        CREAR FUNCION PARA LLAMAR DATOS DE USUARIO
-        datosperfil();
-
-//        CREAR FUNCION PARA LLAMAR DATOS DE OPINIONES
-        aniadiropinion(); //HACERLO Y TERMINAR
+//        datosperfil();
+//
+////        CREAR FUNCION PARA LLAMAR DATOS DE OPINIONES
+//        aniadiropinion(); //HACERLO Y TERMINAR
 
         ListTeacher element = (ListTeacher) getIntent().getSerializableExtra("ListTeacher");
         titleDescription = findViewById(R.id.titleDescriptionStudents);
@@ -99,52 +99,52 @@ public class DescriptionActivity extends AppCompatActivity {
     }
 
 
-//    public void init() {
-//
-//        opinions = new ArrayList<>();
-//        opinions.add(new ListOpinions("23", "Silvia", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
-//        opinions.add(new ListOpinions("43", "Maria Carey", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
-//        opinions.add(new ListOpinions("55", "Jon Etxeberria", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-//        opinions.add(new ListOpinions("86", "Rodrigo Armoa", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
-//        opinions.add(new ListOpinions("86", "Pablo Picasso", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
-//        opinions.add(new ListOpinions("66", "Ezequiel Lavezzi", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
-//        opinions.add(new ListOpinions("32", "Mirella ", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
-//
-//
-//        ListAdapterOpinion listAdapterOpinion = new ListAdapterOpinion(opinions, this, new ListAdapterOpinion.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(ListOpinions item) {
-//
-//            }
-//
-//            public int hashCode() {
-//                return super.hashCode();
-//            }
-//
-//            public boolean equals(@Nullable Object obj) {
-//
-//                return super.equals(obj);
-//            }
-//
-//            protected Object clone() throws CloneNotSupportedException {
-//                return super.clone();
-//            }
-//
-//            public String toString() {
-//                return super.toString();
-//
-//            }
-//
-//            protected void finalize() throws Throwable {
-//                super.finalize();
-//            }
-//        });
-//
-//        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOpinion);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(listAdapterOpinion);
-//    }
+    public void init() {
+
+        opinions = new ArrayList<>();
+        opinions.add(new ListOpinions("23", "Silvia", "7", "Uno de los mejores profesores de la historia", "12/01/2022"));
+        opinions.add(new ListOpinions("43", "Maria Carey", "6", "excelente manera de explicar teareas complejas", "12/01/2022"));
+        opinions.add(new ListOpinions("55", "Jon Etxeberria", "1", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+        opinions.add(new ListOpinions("86", "Rodrigo Armoa", "9", "Uno de los mejores profesores de la historia", "12/01/2022"));
+        opinions.add(new ListOpinions("86", "Pablo Picasso", "3", "excelente manera de explicar teareas complejas", "12/01/2022"));
+        opinions.add(new ListOpinions("66", "Ezequiel Lavezzi", "5", "No me esperaba encontra una persona con tanta paciencia para esta asignatura", "12/01/2022"));
+        opinions.add(new ListOpinions("32", "Mirella ", "8", "Uno de los mejores profesores de la historia", "12/01/2022"));
+
+
+        ListAdapterOpinion listAdapterOpinion = new ListAdapterOpinion(opinions, this, new ListAdapterOpinion.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListOpinions item) {
+
+            }
+
+            public int hashCode() {
+                return super.hashCode();
+            }
+
+            public boolean equals(@Nullable Object obj) {
+
+                return super.equals(obj);
+            }
+
+            protected Object clone() throws CloneNotSupportedException {
+                return super.clone();
+            }
+
+            public String toString() {
+                return super.toString();
+
+            }
+
+            protected void finalize() throws Throwable {
+                super.finalize();
+            }
+        });
+
+        RecyclerView recyclerView = findViewById(R.id.RecyclerViewOpinion);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(listAdapterOpinion);
+    }
 
 
 
@@ -209,63 +209,63 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void datosperfil() {
-        ArrayList<User> lista = new ArrayList<>();
+//    private void datosperfil() {
+//        ArrayList<User> lista = new ArrayList<>();
+//
+//        DescriptionAdapter descriptionAdapter = new DescriptionAdapter (this, R.layout.lista_elementos, lista);
+//        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+//
+//        if (isConnected()) {
+//            GetUsuario users = new GetUsuario();
+//            Thread thread = new Thread(users);
+//            try {
+//                thread.start();
+//                thread.join(); // Awaiting response from the server...
+//            } catch (InterruptedException e) {
+//                // Nothing to do here...
+//            }
+//            // Processing the answer
+//            ArrayList<User> listaCanciones = users.getResponse();
+//            lista.addAll( listaCanciones );
+//            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+//        }
+//    }
 
-        DescriptionAdapter descriptionAdapter = new DescriptionAdapter (this, R.layout.lista_elementos, lista);
-        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
-
-        if (isConnected()) {
-            GetUsuario users = new GetUsuario();
-            Thread thread = new Thread(users);
-            try {
-                thread.start();
-                thread.join(); // Awaiting response from the server...
-            } catch (InterruptedException e) {
-                // Nothing to do here...
-            }
-            // Processing the answer
-            ArrayList<User> listaCanciones = users.getResponse();
-            lista.addAll( listaCanciones );
-            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
-        }
-    }
-
-    private void aniadiropinion() {
-        ArrayList<Teacher> lista = new ArrayList<>();
-
-        TeachersAdapter teachersAdapter = new TeachersAdapter (this, R.layout.lista_elementos, lista);
-        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
-
-        if (isConnected()) {
-            GetTeachers teachers = new GetTeachers();
-            Thread thread = new Thread(teachers);
-            try {
-                thread.start();
-                thread.join(); // Awaiting response from the server...
-            } catch (InterruptedException e) {
-                // Nothing to do here...
-            }
-            // Processing the answer
-            ArrayList<Teacher> listaCanciones = teachers.getResponse();
-            lista.addAll( listaCanciones );
-            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
-        }
-    }
-
-
-    public boolean isConnected() {
-        boolean ret = false;
-        try {
-            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
-                    .getSystemService( Context.CONNECTIVITY_SERVICE);
-            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
-                ret = true;
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
-        }
-        return ret;
-    }
+//    private void aniadiropinion() {
+//        ArrayList<Teacher> lista = new ArrayList<>();
+//
+//        TeachersAdapter teachersAdapter = new TeachersAdapter (this, R.layout.lista_elementos, lista);
+//        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+//
+//        if (isConnected()) {
+//            GetTeachers teachers = new GetTeachers();
+//            Thread thread = new Thread(teachers);
+//            try {
+//                thread.start();
+//                thread.join(); // Awaiting response from the server...
+//            } catch (InterruptedException e) {
+//                // Nothing to do here...
+//            }
+//            // Processing the answer
+//            ArrayList<Teacher> listaCanciones = teachers.getResponse();
+//            lista.addAll( listaCanciones );
+//            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+//        }
+//    }
+//
+//
+//    public boolean isConnected() {
+//        boolean ret = false;
+//        try {
+//            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+//                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+//            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+//            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+//                ret = true;
+//        } catch (Exception e) {
+//            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+//        }
+//        return ret;
+//    }
 
 }
