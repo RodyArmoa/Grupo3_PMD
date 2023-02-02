@@ -30,6 +30,7 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topics);
 
+
         buscarAsignatura = (SearchView) findViewById(R.id.buscarAsignatura);
 
         buscarAsignatura.setOnQueryTextListener(this);

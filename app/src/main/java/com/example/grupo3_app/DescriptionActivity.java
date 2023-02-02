@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,11 +21,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.grupo3_app.Adapter.DescriptionAdapter;
+import com.example.grupo3_app.Adapter.TeachersAdapter;
+import com.example.grupo3_app.Networks.GetTeachers;
+import com.example.grupo3_app.Networks.GetUsuario;
 import com.example.grupo3_app.Opinions.ListAdapterOpinion;
 import com.example.grupo3_app.Opinions.ListOpinions;
 import com.example.grupo3_app.Teacher.ListTeacher;
+import com.example.grupo3_app.Teacher.Teacher;
+import com.example.grupo3_app.User.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +54,14 @@ public class DescriptionActivity extends AppCompatActivity {
 
         escribirComentario = (Button) findViewById(R.id.idEscribirComentario);
 
-
-
-
         init();
+
+
+//        CREAR FUNCION PARA LLAMAR DATOS DE USUARIO
+//        datosperfil();
+//
+////        CREAR FUNCION PARA LLAMAR DATOS DE OPINIONES
+//        aniadiropinion(); //HACERLO Y TERMINAR
 
         ListTeacher element = (ListTeacher) getIntent().getSerializableExtra("ListTeacher");
         titleDescription = findViewById(R.id.titleDescriptionStudents);
@@ -171,6 +186,13 @@ public class DescriptionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                    boton_escribirComent=findViewById(R.id.CampodeComentario);
+
+
+
+//                   INSERTAR AQUI EL CREATE DE OPINIONES
+
+
+
                    //opinions.add(new ListOpinions(teacher.getTeacher(),teacher.getOpinion(),teacher.getStatus(),teacher.getName(),teacher.));
                        // opinions.add(new ListOpinions("AAAMR", "Jon Etxeberria", "1",boton_escribirComent.getText().toString() , "12/01/2022"));
 
@@ -187,6 +209,63 @@ public class DescriptionActivity extends AppCompatActivity {
         dialog.show();
     }
 
+//    private void datosperfil() {
+//        ArrayList<User> lista = new ArrayList<>();
+//
+//        DescriptionAdapter descriptionAdapter = new DescriptionAdapter (this, R.layout.lista_elementos, lista);
+//        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+//
+//        if (isConnected()) {
+//            GetUsuario users = new GetUsuario();
+//            Thread thread = new Thread(users);
+//            try {
+//                thread.start();
+//                thread.join(); // Awaiting response from the server...
+//            } catch (InterruptedException e) {
+//                // Nothing to do here...
+//            }
+//            // Processing the answer
+//            ArrayList<User> listaCanciones = users.getResponse();
+//            lista.addAll( listaCanciones );
+//            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (descriptionAdapter);
+//        }
+//    }
 
+//    private void aniadiropinion() {
+//        ArrayList<Teacher> lista = new ArrayList<>();
+//
+//        TeachersAdapter teachersAdapter = new TeachersAdapter (this, R.layout.lista_elementos, lista);
+//        ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+//
+//        if (isConnected()) {
+//            GetTeachers teachers = new GetTeachers();
+//            Thread thread = new Thread(teachers);
+//            try {
+//                thread.start();
+//                thread.join(); // Awaiting response from the server...
+//            } catch (InterruptedException e) {
+//                // Nothing to do here...
+//            }
+//            // Processing the answer
+//            ArrayList<Teacher> listaCanciones = teachers.getResponse();
+//            lista.addAll( listaCanciones );
+//            ((ListView) findViewById( R.id.listarecyclerview)).setAdapter (teachersAdapter);
+//        }
+//    }
+//
+//
+//    public boolean isConnected() {
+//        boolean ret = false;
+//        try {
+//            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+//                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+//            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+//            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+//                ret = true;
+//        } catch (Exception e) {
+//            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+//        }
+//        return ret;
+//    }
 
 }

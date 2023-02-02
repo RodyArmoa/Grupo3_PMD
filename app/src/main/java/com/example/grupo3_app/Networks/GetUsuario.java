@@ -1,5 +1,6 @@
 package com.example.grupo3_app.Networks;
 
+import com.example.grupo3_app.Teacher.Teacher;
 import com.example.grupo3_app.User.User;
 
 import org.json.JSONException;

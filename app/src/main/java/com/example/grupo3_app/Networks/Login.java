@@ -70,7 +70,7 @@ public class Login extends NetConfiguration implements Runnable {
                 JSONObject jsonUser = new JSONObject (theUnprocessedJSON);
                 Logear logear = new Logear();
                 logear = new Logear();
-                logear.setId(jsonUser.getInt("id"));
+                logear.setId(jsonUser.getLong("id"));
                 logear.setEmail(jsonUser.getString("email"));
                 logear.setAdmin(jsonUser.getBoolean("admin"));
                 logear.setAccesToken(jsonUser.getString("accesToken"));

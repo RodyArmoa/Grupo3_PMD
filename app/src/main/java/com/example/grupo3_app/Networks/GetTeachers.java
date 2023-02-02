@@ -1,5 +1,7 @@
 package com.example.grupo3_app.Networks;
 
+import android.content.res.Resources;
+
 import com.example.grupo3_app.Teacher.Teacher;
 
 import org.json.JSONArray;

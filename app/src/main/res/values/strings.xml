@@ -1,5 +1,4 @@
 <resources>
-    <string name="spinner_english">English</string>
     <string name="app_name">Grupo3_app</string>
 
     <string name="error_communication">Error de comunicacion</string>
@@ -17,9 +16,7 @@
     <string name="titulo_login">LOGIN</string>
     <string name="recuerda">Recuerdame</string>
     <string name="acceder">Entrar</string>
-    <string name="recibir_correo">Quiero recibir una contraseña nueva</string>
-    <string name="correo_enviado">Se le ha enviado una contraseña nueva</string>
-
+    <string name="recibir_correo" translatable="false">Quiero recibir una contraseña nueva</string>
 
     /*Registro*/
 
@@ -28,12 +25,14 @@
     <string name="apellido1">Apellidos</string>
     <string name="correo">E-mail:</string>
     <string name="contraseña2">Repite la contraseña:</string>
-    <string name="phone">Telefono</string>
+    <string name="phone" translatable="false">Telefono</string>
     <string name="registrar">Registrar</string>
 
-    /*Canciones*/
-
-    <string name="titulo_canciones">TODAS LAS CANCIONES</string>
+    /*CambioPass*/
+    <string name="titulo_reset" translatable="false">Introduce tu correo para actualizar su email</string>
+    <string name="pass_cambiada" translatable="false">Se ha enviado su contraseña por correo</string>
+    <string name="btn_reset" translatable="false">Recibir contraseña nueva</string>
+    <string name="btn_volver" translatable="false">Volver a login</string>
 
     /*Favoritas*/
     <string name="titulo_favs">TUS FAVORITAS</string>
@@ -62,13 +61,13 @@
     /*Editar mis Datos Personales*/
     <string name="actualizarNombre">Nombre</string>
     <string name="actualizarapellidos">Apellidos</string>
-    <string name="actualizarEmail">Email</string>
-    <string name="actualizarPhone">Phone</string>
-    <string name="actualizarLocaclidad">Localidad</string>
-    <string name="botonGuardar">Guardar</string>
+    <string name="actualizarEmail" translatable="false">Email</string>
+    <string name="actualizarPhone" translatable="false">Phone</string>
+    <string name="actualizarLocaclidad" translatable="false">Localidad</string>
+    <string name="botonGuardar" translatable="false">Guardar</string>
 
 
-    <string name="boton_escribirComent">Ok</string>
-    <string name="boton_CancelarescribirComent">Cancelar</string>
+    <string name="boton_escribirComent" translatable="false">Ok</string>
+    <string name="boton_CancelarescribirComent" translatable="false">Cancelar</string>
 
 </resources>
