@@ -67,7 +67,7 @@ public class EnviarEmail extends NetConfiguration implements Runnable {
                 JSONObject jsonUser = new JSONObject (theUnprocessedJSON);
                 Logear email = new Logear();
                 email = new Logear();
-                email.setId(jsonUser.getInt("id"));
+                email.setId(jsonUser.getLong("id"));
                 email.setEmail(jsonUser.getString("email"));
                 this.response = email;
 //                for(int i=0; i<mainArray.length();i++){
