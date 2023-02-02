@@ -40,7 +40,7 @@ public class TeachersAdapter extends ArrayAdapter<Teacher> {
         String nombre = lista.get(position).getName() +" "+ lista.get(position).getSurname();
         ((TextView) view.findViewById( R.id.nameTextView)).setText(nombre);
         ((TextView) view.findViewById( R.id.statusTextView)).setText(lista.get(position).getLocation());
-        ((TextView) view.findViewById( R.id.asignaturaTexView)).setText("Asignatura");
+        ((TextView) view.findViewById( R.id.asignaturaTexView)).setText("Asignaturas");
         ((ImageView) view.findViewById(R.id.iconImageViewStudents)).setColorFilter(Color.parseColor("black"), PorterDuff.Mode.SRC_IN);
         return view;
     }
