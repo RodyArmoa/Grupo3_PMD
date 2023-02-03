@@ -5,12 +5,15 @@
     <string name="error_communication">Errore di comunicazione</string>
 
     /*Generale*/
-
     <string name="registro">Registrati</string>
     <string name="login">Login</string>
     <string name="contraseña">Password</string>
     <string name="canciones">Canzoni</string>
     <string name="favoritos">Preferiti</string>
+    <string name="contraseñav">Contraseña actual</string>
+    <string name="contraseñan">Contraseña nueva</string>
+    <string name="contraseñanr">Repite contraseña nueva </string>
+    <string name="actualpass">Actualizar mi contraseña </string>
 
     /*Login*/
 
@@ -28,9 +31,12 @@
     <string name="check">Confermo la politica sulla privacy e le condizioni d\'uso</string>
     <string name="registrar">Registrati</string>
 
-    /*Canciones*/
+    /*CambioPass*/
+    <string name="titulo_reset" translatable="false">Introduce tu correo para actualizar su email</string>
+    <string name="pass_cambiada" translatable="false">Se ha enviado su contraseña por correo</string>
+    <string name="btn_reset" translatable="false">Recibir contraseña nueva</string>
+    <string name="btn_volver" translatable="false">Volver a login</string>
 
-    <string name="titulo_canciones">TUTTE LE CANZONI</string>
 
     /*Favoritas*/
     <string name="titulo_favs">I TUOI PREFERITI</string>

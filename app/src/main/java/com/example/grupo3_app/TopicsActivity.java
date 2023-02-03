@@ -1,25 +1,30 @@
 package com.example.grupo3_app;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.grupo3_app.Adapter.TeachersAdapter;
+import com.example.grupo3_app.Adapter.TopicsAdapter;
+import com.example.grupo3_app.Networks.GetTopics;
 import com.example.grupo3_app.Topics.ListAdapterTopics;
 import com.example.grupo3_app.Topics.Listelementtopic;
+import com.example.grupo3_app.Topics.Topics;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicsActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class TopicsActivity extends AppCompatActivity {
     List<Listelementtopic> listelementtopics;
     BottomNavigationView mbottomNavigationView;
     SearchView buscarAsignatura;
@@ -31,9 +36,7 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
         setContentView(R.layout.activity_topics);
 
 
-        buscarAsignatura = (SearchView) findViewById(R.id.buscarAsignatura);
-
-        buscarAsignatura.setOnQueryTextListener(this);
+        // buscarAsignatura.setOnQueryTextListener(this);
 
 
         //-----------Barra Menu Inferior---------------------------------------------//
@@ -80,17 +83,54 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
             }
         });
 
+
+        ArrayList<Topics> lista = new ArrayList<>();
+
+        TopicsAdapter teachersAdapter = new TopicsAdapter (this, R.layout.lista_elementos_asignaturas, lista);
+        ((ListView) findViewById( R.id.listAsignaturasRecyView)).setAdapter (teachersAdapter);
+
+
+
+        if (isConnected()) {
+            GetTopics getTopics = new GetTopics();
+            Thread thread = new Thread(getTopics);
+            try {
+                thread.start();
+                thread.join(); // Awaiting response from the server...
+            } catch (InterruptedException e) {
+                // Nothing to do here...
+            }
+            // Processing the answer
+            ArrayList<Topics> listateacher = getTopics.getResponse();
+            lista.addAll( listateacher );
+            ((ListView) findViewById( R.id.listAsignaturasRecyView)).setAdapter (teachersAdapter);
+        }
+
         //-----------------FIn de Barra Menu inferior------------------//
 
 
         //--------Inicializacion del metodo Init()--------//
-        init();
+        //init();
         //--------Fin del Inicializacion del metodo Init()--------//
     }
 
 
-    public void init() {
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService( Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+        }
+        return ret;
+    }
 
+
+  /*  public void init() {
         listelementtopics = new ArrayList<>();
         listelementtopics.add(new Listelementtopic("#0B5345", "Base de Datos", "Pedro Gutierrez", "Mañana"));
         listelementtopics.add(new Listelementtopic("#B779DD", "Programacion", "Juan Notario", "Tardes"));
@@ -114,37 +154,28 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
         listelementtopics.add(new Listelementtopic("#79CCDD", "Amazon Web Services", "Leire Villamarin", "Mañana"));
         listelementtopics.add(new Listelementtopic("#0B5345", "Amazon Web Services", "Susana Torres", "Tardes"));
         listelementtopics.add(new Listelementtopic("#9179DD", "Amazon Web Services", "Luis Medina", "Mañana"));
-
-
         listAdapterTopics = new ListAdapterTopics(listelementtopics, this, new ListAdapterTopics.OnItemClickListener() {
             @Override
             public void onItemClick(Listelementtopic item) {
-
-
             }
-
             @Override
             public int hashCode() {
                 return super.hashCode();
             }
-
             @Override
             public boolean equals(@Nullable Object obj) {
                 return super.equals(obj);
             }
-
             @NonNull
             @Override
             protected Object clone() throws CloneNotSupportedException {
                 return super.clone();
             }
-
             @NonNull
             @Override
             public String toString() {
                 return super.toString();
             }
-
             @Override
             protected void finalize() throws Throwable {
                 super.finalize();
@@ -154,19 +185,14 @@ public class TopicsActivity extends AppCompatActivity implements SearchView.OnQu
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapterTopics);
-
-
     }
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
     }
-
     @Override
     public boolean onQueryTextChange(String newText) {
-
         listAdapterTopics.buscarAsignatura(newText);
         return false;
-    }
+    }*/
 }

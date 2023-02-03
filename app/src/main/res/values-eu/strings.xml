@@ -6,12 +6,15 @@
     <string name="error_communication">Komunikazio errorea</string>
 
     /*General*/
-
+    <string name="contraseñav">Contraseña actual</string>
+    <string name="contraseñan">Contraseña nueva</string>
+    <string name="contraseñanr">Repite contraseña nueva </string>
     <string name="registro">Erregistratu</string>
     <string name="login">Sartu</string>
     <string name="contraseña">Pasahitza</string>
     <string name="canciones">Abestiak</string>
     <string name="favoritos">Gogokoenak</string>
+    <string name="actualpass">Actualizar mi contraseña </string>
 
     /*Login*/
 
@@ -29,9 +32,12 @@
     <string name="check">Pribatutasun eta erabilera baldintzen politika onartzen dut</string>
     <string name="registrar">Erregistratu</string>
 
-    /*Canciones*/
+    /*CambioPass*/
+    <string name="titulo_reset" translatable="false">Introduce tu correo para actualizar su email</string>
+    <string name="pass_cambiada" translatable="false">Se ha enviado su contraseña por correo</string>
+    <string name="btn_reset" translatable="false">Recibir contraseña nueva</string>
+    <string name="btn_volver" translatable="false">Volver a login</string>
 
-    <string name="titulo_canciones">ABESTI GUZTIAK</string>
 
     /*Favoritas*/
     <string name="titulo_favs">ZURE GOGOKOENAK</string>

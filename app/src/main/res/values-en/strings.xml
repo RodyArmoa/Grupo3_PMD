@@ -8,20 +8,22 @@
 
     /*General*/
 
+    <string name="contraseñav">Contraseña actual</string>
+    <string name="contraseñan">Contraseña nueva</string>
+    <string name="contraseñanr">Repite contraseña nueva </string>
     <string name="registro">Check in</string>
     <string name="login">Login</string>
     <string name="contraseña">Password</string>
     <string name="canciones">songs</string>
     <string name="favoritos">Favorites</string>
+    <string name="actualpass">Actualizar mi contraseña </string>
 
     /*Login*/
-
     <string name="titulo_login">LOGIN</string>
     <string name="recuerda">remember me</string>
     <string name="acceder">Get In</string>
 
     /*Registro*/
-
     <string name="titulo_registro">Register</string>
     <string name="nombre">Name:</string>
     <string name="apellido1">Surname</string>
@@ -30,9 +32,12 @@
     <string name="check">I confirm the privacy policy and conditions of use</string>
     <string name="registrar">Register</string>
 
-    /*Canciones*/
+    /*CambioPass*/
+    <string name="titulo_reset" translatable="false">Introduce tu correo para actualizar su email</string>
+    <string name="pass_cambiada" translatable="false">Se ha enviado su contraseña por correo</string>
+    <string name="btn_reset" translatable="false">Recibir contraseña nueva</string>
+    <string name="btn_volver" translatable="false">Volver a login</string>
 
-    <string name="titulo_canciones">ALL THE SONGS</string>
 
     /*Favoritas*/
     <string name="titulo_favs">YOUR FAVORITES</string>

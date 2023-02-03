@@ -54,7 +54,6 @@ public class GetTopics extends NetConfiguration implements Runnable {
                     teacher.setId(profesor.getInt("id"));
                     teacher.setName( profesor.getString("name"));
 
-
                     this.response.add(teacher);
                     System.out.println(response);
                 }

@@ -1,5 +1,7 @@
 package com.example.grupo3_app;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -9,84 +11,61 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.grupo3_app.Networks.Actualizarpass;
 import com.example.grupo3_app.Networks.ResetPass;
 
-public class ResetPassActivity extends AppCompatActivity {
+public class ActualizarPass extends AppCompatActivity {
+    private EditText etemail, etpassv, etpassn, etpassnr;
     private Button btnpass;
-    private TextView titulo;
-    private EditText etemail;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resetpass);
+        setContentView(R.layout.activity_actualizar_pass);
+        etemail = findViewById(R.id.correoact);
+        etpassv = findViewById(R.id.passwordactual);
+        etpassn = findViewById(R.id.passnueva);
+        etpassnr = findViewById(R.id.repetirpass);
 
         btnpass = findViewById(R.id.actualpass);
-        titulo = findViewById(R.id.actualizapass);
-        etemail = findViewById(R.id.correoactual);
-
-
-        ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result != null && result.getResultCode() == RESULT_OK) {
-                }
-            }
-        });
 
         btnpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = etemail.getText().toString();
+                String pass = etpassv.getText().toString();
+                String passn = etpassn.getText().toString();
+                String passnr = etpassnr.getText().toString();
                 System.out.println(generateSongJson());
-                if(btnpass.getText().equals(getString(R.string.btn_reset))){
-                    btnpass.setText(R.string.btn_volver);
-                    titulo.setText(R.string.pass_cambiada);
+                if(passn.equals(passnr)){
                     if (isConnected()) {
-                        ResetPass reset = new ResetPass(ResetPassActivity.this, ResetPassActivity.this.generateSongJson(), ResetPassActivity.this.datosUserb(email));
+                        Actualizarpass passNueva = new Actualizarpass(ActualizarPass.this, ActualizarPass.this.generateSongJson(), ActualizarPass.this.datosUserb(email,pass));
 
-                        Thread thread = new Thread(reset);
+                        Thread thread = new Thread(passNueva);
                         try {
-                            System.out.println("hola");
-
                             thread.start();
                             thread.join(); // Awaiting response from the server...
                         } catch (InterruptedException e) {
                             // Nothing to do here...
                         }
-
                     }
-                }
-                else{
-                    Intent intent = new Intent(ResetPassActivity.this, LoginActivity.class);
-                    startForResult.launch(intent);
-                    overridePendingTransition(R.anim.right_in, R.anim.right_out);
-                    finish();
                 }
             }
         });
-
     }
 
     public String generateSongJson() {
 
         return "{" +
-                "\"email\": \"" + etemail.getText().toString()  + "\"" +
+                "\"password\": \"" + etpassn.getText().toString()  + "\"" +
                 "}";
     }
 
-    public String datosUserb(String email){
-        return "/auth/enviarEmail/"+email;
+    public String datosUserb(String email,String pass){
+        return "/auth/cambiopass/"+email+"/"+pass;
     }
 
     public boolean isConnected() {

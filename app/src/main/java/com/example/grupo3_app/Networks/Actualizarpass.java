@@ -2,14 +2,8 @@ package com.example.grupo3_app.Networks;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.widget.Toast;
 
-import com.example.grupo3_app.R;
 import com.example.grupo3_app.Response.RegisterResponse;
-
-import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,15 +14,15 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class ActualizarUser extends NetConfiguration implements Runnable {
+public class Actualizarpass extends NetConfiguration implements Runnable {
 
 
-    private final String theUrl;
+    private String theUrl;
     private RegisterResponse registerResponse;
     private Resources res;
     private String userRegisterJson;
 
-    public ActualizarUser(Context context, String userRegisterJson, String url) {
+    public Actualizarpass(Context context, String userRegisterJson, String url) {
         res = context.getResources();
         this.userRegisterJson = userRegisterJson;
         theUrl = ddbbURL +url;

@@ -37,10 +37,9 @@ public class TopicsAdapter extends ArrayAdapter<Topics> {
         int i= 0;
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate ( R.layout.lista_elementos_asignaturas, null);
-        String nombre = lista.get(position).getName() +" "+ lista.get(position).getName();
-        ((TextView) view.findViewById( R.id.statusTextViewAsignatura)).setText(nombre);
-        //((TextView) view.findViewById( R.id.nameAsignaturaTextView)).setText(lista.get(position).getId_teacher());
-        ((TextView) view.findViewById( R.id.teacherTextView)).setText("Asignatura");
+        ((TextView) view.findViewById( R.id.nameAsignaturaTextView)).setText(lista.get(position).getName());
+        ((TextView) view.findViewById( R.id.statusTextViewAsignatura)).setText("Turno");
+        ((TextView) view.findViewById( R.id.teacherTextView)).setText("Profesor");
         ((ImageView) view.findViewById(R.id.iconImageViewAsignaturas)).setColorFilter(Color.parseColor("black"), PorterDuff.Mode.SRC_IN);
         return view;
     }

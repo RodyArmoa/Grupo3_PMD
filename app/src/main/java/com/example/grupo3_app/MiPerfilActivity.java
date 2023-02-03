@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MiPerfilActivity extends AppCompatActivity {
 
     TextView idNombreDatos, idApellidosDatos, idEmailDatos, idPhoneDato, idLocationDato;
-    Button idBtnActualizarDato;
+    Button idBtnActualizarDato, btnactualizarpass;
     boolean actualizado = false;
 
     @Override
@@ -70,6 +70,16 @@ public class MiPerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MiPerfilActivity.this, ActualizarDatosActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        btnactualizarpass = findViewById(R.id.idBtnActualizarPassDatos);
+        btnactualizarpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MiPerfilActivity.this, ActualizarPass.class);
                 startActivity(intent);
 
             }

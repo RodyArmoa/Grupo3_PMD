@@ -8,8 +8,12 @@
     <string name="registro">Registrarse</string>
     <string name="login">Login</string>
     <string name="contraseña">Contraseña</string>
+    <string name="contraseñav">Contraseña actual</string>
+    <string name="contraseñan">Contraseña nueva</string>
+    <string name="contraseñanr">Repite contraseña nueva </string>
     <string name="canciones">Canciones</string>
     <string name="favoritos">Favoritos</string>
+    <string name="actualpass">Actualizar mi contraseña </string>
 
     /*Login*/
 
