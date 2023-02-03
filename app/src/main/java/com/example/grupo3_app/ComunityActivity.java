@@ -59,8 +59,11 @@ public class ComunityActivity extends AppCompatActivity {
 
                 }
                 if (item.getItemId() == R.id.menu_inferior_perfil) {
-
+                    Bundle extra = getIntent().getExtras();
+                    Integer id = extra.getInt("userid");
+                    System.out.println(id);
                     Intent intent = new Intent(ComunityActivity.this, MiPerfilActivity.class);
+                    intent.putExtra("userid", id);
                     startActivity(intent);
                     overridePendingTransition(R.anim.right_in, R.anim.right_out);
 
@@ -138,6 +141,10 @@ public class ComunityActivity extends AppCompatActivity {
             Toast.makeText(this, "Asignaturas", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.item4) {
+
+            Intent intent = new Intent(ComunityActivity.this, LoginActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.right_in, R.anim.right_out);
             Toast.makeText(this, "Salir", Toast.LENGTH_SHORT).show();
 
         }

@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         resizeIcons();
         setupWidgetEventListener();
         getPreferencesData();
-
+        buttonSetup();
 
         ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
@@ -208,12 +208,12 @@ public class LoginActivity extends AppCompatActivity {
                                 thread.join(); // Awaiting response from the server...
                                 Logear lista = login.getResponse();
 
-                                System.out.println(lista.getId());
-
                                 if(lista != null){
                                     int duartion = Toast.LENGTH_LONG;
                                     Toast toast = Toast.makeText(context, string, duartion);
                                     Intent intent = new Intent(LoginActivity.this, ComunityActivity.class);
+                                    System.out.println("id = "+lista.getId());
+                                    intent.putExtra("userid", lista.getId());
                                     startForResult.launch(intent);
                                     overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back_out);
                                 }
@@ -314,6 +314,7 @@ public class LoginActivity extends AppCompatActivity {
         btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 showChangeLanguageDialog();
             }
         });

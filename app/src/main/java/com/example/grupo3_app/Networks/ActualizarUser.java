@@ -62,16 +62,16 @@ public class ActualizarUser extends NetConfiguration implements Runnable {
             } else if (responseCode == HttpURLConnection.HTTP_NO_CONTENT) {
                 registerResponse.setAcceso(true);
 
-                try (BufferedReader br = new BufferedReader(
-                        new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"))) {
-                    StringBuilder response = new StringBuilder();
-                    String responseLine = null;
-                    while ((responseLine = br.readLine()) != null) {
-                        response.append(responseLine.trim());
-                    }
-                    br.close();
-                    registerResponse.setSqlReturn(Integer.parseInt(response.toString()));
-                }
+//                try (BufferedReader br = new BufferedReader(
+//                        new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"))) {
+//                    StringBuilder response = new StringBuilder();
+//                    String responseLine = null;
+//                    while ((responseLine = br.readLine()) != null) {
+//                        response.append(responseLine.trim());
+//                    }
+//                    br.close();
+//                    registerResponse.setSqlReturn(Integer.parseInt(response.toString()));
+//                }
             }
         } catch (ProtocolException e) {
             e.printStackTrace();

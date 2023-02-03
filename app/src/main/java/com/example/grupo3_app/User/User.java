@@ -3,7 +3,7 @@ package com.example.grupo3_app.User;
 public class User {
     private static final long serialVersionUID = -578858462965845200L;
 
-    private Long id;
+    private Integer id;
     private String name;
     private String surname;
     private String location;
@@ -25,11 +25,12 @@ public class User {
 //        this.favorites = favorites;
 //    }
 
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

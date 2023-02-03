@@ -69,7 +69,10 @@ public class MiPerfilActivity extends AppCompatActivity {
         idBtnActualizarDato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle extra = getIntent().getExtras();
+                Integer iduser = extra.getInt("userid");
                 Intent intent = new Intent(MiPerfilActivity.this, ActualizarDatosActivity.class);
+                intent.putExtra("userid", iduser);
                 startActivity(intent);
 
             }

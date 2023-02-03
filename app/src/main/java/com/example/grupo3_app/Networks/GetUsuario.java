@@ -49,7 +49,7 @@ public class GetUsuario extends NetConfiguration implements Runnable {
 
                 User user = new User();
                 user = new User();
-                user.setId(jsonUser.getLong("id"));
+                user.setId(jsonUser.getInt("id"));
                 user.setName(jsonUser.getString("name"));
                 user.setSurname(jsonUser.getString("surname"));
                 user.setEmail(jsonUser.getString("email"));
